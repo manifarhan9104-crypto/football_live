@@ -1,9 +1,12 @@
+```html
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>football_live | جزئیات بازی</title>
+
+  <title>جزئیات بازی | football_live</title>
 
   <style>
     * {
@@ -15,1208 +18,661 @@
 
     body {
       background: #080d12;
-      color: #fff;
+      color: white;
+      min-height: 100vh;
     }
 
     .app {
       max-width: 650px;
-      min-height: 100vh;
       margin: auto;
-      padding-bottom: 40px;
+      padding-bottom: 90px;
     }
 
     /* HEADER */
 
-    .header {
-      height: 70px;
-      padding: 12px 16px;
+    header {
+      padding: 18px 16px;
       display: flex;
       align-items: center;
-      gap: 14px;
+      justify-content: space-between;
     }
 
-    .back {
-      width: 42px;
-      height: 42px;
+    .back-btn {
+      width: 43px;
+      height: 43px;
       border: none;
       border-radius: 13px;
       background: #121a22;
-      color: #fff;
-      font-size: 25px;
+      color: white;
+      font-size: 22px;
       cursor: pointer;
     }
 
-    .header-title {
+    .brand {
+      text-align: center;
+      flex: 1;
+    }
+
+    .brand h1 {
       font-size: 19px;
-      font-weight: bold;
+    }
+
+    .brand p {
+      color: #7d8b97;
+      font-size: 11px;
+      margin-top: 4px;
+    }
+
+    .header-space {
+      width: 43px;
     }
 
     /* MATCH */
 
     .match-card {
-      margin: 10px 16px;
-      padding: 24px 16px;
-      border-radius: 24px;
-      background: linear-gradient(145deg, #10251a, #10171d);
-      border: 1px solid rgba(0, 210, 106, .3);
-      text-align: center;
-    }
+      margin: 5px 16px 0;
+      padding: 24px 18px;
 
-    .league {
-      color: #7d8b97;
-      font-size: 12px;
-      margin-bottom: 12px;
+      background:
+        linear-gradient(145deg, #10251a, #10171d);
+
+      border: 1px solid rgba(0, 210, 106, .35);
+      border-radius: 25px;
+
+      box-shadow: 0 15px 40px rgba(0, 0, 0, .2);
     }
 
     .live {
-      display: inline-block;
-      color: #ff5555;
+      width: max-content;
+      margin: auto;
+
       background: rgba(255, 50, 50, .12);
+      color: #ff5252;
+
       padding: 6px 13px;
       border-radius: 20px;
+
       font-size: 12px;
       font-weight: bold;
     }
 
+    .league {
+      text-align: center;
+      color: #7d8b97;
+      font-size: 12px;
+      margin-top: 14px;
+    }
+
     .teams {
-      margin-top: 23px;
       display: grid;
       grid-template-columns: 1fr auto 1fr;
       align-items: center;
-      gap: 10px;
+
+      gap: 12px;
+      margin-top: 25px;
+    }
+
+    .team {
+      text-align: center;
     }
 
     .team-logo {
-      width: 68px;
-      height: 68px;
+      width: 75px;
+      height: 75px;
+
+      margin: auto;
+
       border-radius: 50%;
       background: #1c2730;
-      margin: auto;
+
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 32px;
+
+      overflow: hidden;
+
+      font-size: 35px;
+    }
+
+    .team-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
     }
 
     .team-name {
-      margin-top: 9px;
-      font-size: 14px;
-      font-weight: bold;
-    }
-
-    .score {
-      font-size: 36px;
-      font-weight: bold;
-      direction: ltr;
-    }
-
-    .minute {
-      color: #00d26a;
-      font-size: 13px;
-      font-weight: bold;
-      margin-top: 5px;
-    }
-
-    /* TABS */
-
-    .tabs {
-      margin: 18px 16px;
-      padding: 5px;
-      border-radius: 16px;
-      background: #10171d;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 5px;
-    }
-
-    .tab {
-      border: none;
-      background: transparent;
-      color: #7d8b97;
-      padding: 12px 3px;
-      border-radius: 11px;
-      cursor: pointer;
-      font-size: 11px;
-    }
-
-    .tab.active {
-      background: #00d26a;
-      color: #06100b;
-      font-weight: bold;
-    }
-
-    /* SECTIONS */
-
-    .section {
-      margin: 0 16px 15px;
-      padding: 18px;
-      background: #121a22;
-      border-radius: 20px;
-    }
-
-    .section-title {
-      font-size: 16px;
-      font-weight: bold;
-      margin-bottom: 16px;
-    }
-
-    .hidden {
-      display: none !important;
-    }
-
-    /* EVENTS */
-
-    .event {
-      display: flex;
-      align-items: center;
-      gap: 11px;
-      padding: 13px 0;
-      border-bottom: 1px solid #202a33;
-    }
-
-    .event:last-child {
-      border-bottom: none;
-    }
-
-    .event-time {
-      width: 42px;
-      color: #00d26a;
-      font-weight: bold;
-      direction: ltr;
-    }
-
-    .event-icon {
-      font-size: 20px;
-    }
-
-    .event-player {
-      flex: 1;
-      font-size: 13px;
-    }
-
-    /* STATS */
-
-    .stats-row {
-      display: grid;
-      grid-template-columns: 1fr 100px 1fr;
-      align-items: center;
-      gap: 10px;
-      margin: 17px 0;
-    }
-
-    .stat-value {
+      margin-top: 10px;
       font-size: 15px;
       font-weight: bold;
     }
 
-    .stat-left {
-      text-align: right;
-    }
-
-    .stat-right {
-      text-align: left;
-    }
-
-    .stat-name {
-      color: #7d8b97;
+    .score {
+      direction: ltr;
       text-align: center;
-      font-size: 11px;
+
+      font-size: 36px;
+      font-weight: bold;
     }
 
-    .progress {
-      height: 5px;
-      background: #27333c;
-      border-radius: 10px;
-      overflow: hidden;
+    .minute {
+      text-align: center;
+
+      color: #00d26a;
+      font-size: 14px;
+      font-weight: bold;
+
       margin-top: 6px;
     }
 
-    .progress-left {
-      height: 100%;
-      background: #00d26a;
-      float: right;
+    /* INFO */
+
+    .info {
+      margin-top: 22px;
+
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+
+      gap: 10px;
     }
 
-    /* LINEUP */
-
-    .formation {
-      min-height: 390px;
-      padding: 20px 10px;
-      border-radius: 18px;
-      background: #0d351f;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .pitch {
-      position: absolute;
-      inset: 15px;
-      border: 1px solid rgba(255,255,255,.16);
-      border-radius: 12px;
-    }
-
-    .pitch-circle {
-      position: absolute;
-      width: 80px;
-      height: 80px;
-      border: 1px solid rgba(255,255,255,.16);
-      border-radius: 50%;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-    }
-
-    .lineup {
-      position: relative;
-      z-index: 2;
-      min-height: 350px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-around;
-    }
-
-    .line {
-      display: flex;
-      justify-content: space-around;
-    }
-
-    .player-pitch {
-      text-align: center;
-      font-size: 10px;
-      min-width: 55px;
-    }
-
-    .player-ball {
-      width: 38px;
-      height: 38px;
-      margin: auto;
-      border-radius: 50%;
-      background: #00d26a;
-      color: #06100b;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: bold;
-      border: 2px solid #fff;
-    }
-
-    /* PLAYER RATINGS */
-
-    .rating-summary {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 15px;
+    .info-item {
+      background: #121a22;
       border-radius: 15px;
-      background: #18232b;
-      margin-bottom: 15px;
+      padding: 14px;
+
+      text-align: center;
     }
 
-    .best-player {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .best-avatar {
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      background: #00d26a;
-      color: #06100b;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 22px;
-      font-weight: bold;
-    }
-
-    .best-title {
-      color: #7d8b97;
-      font-size: 10px;
-      margin-bottom: 5px;
-    }
-
-    .best-name {
-      font-weight: bold;
-      font-size: 14px;
-    }
-
-    .best-rating {
-      color: #00d26a;
-      font-size: 22px;
-      font-weight: bold;
-    }
-
-    .team-rating-title {
+    .info-label {
       color: #7d8b97;
       font-size: 11px;
-      margin-bottom: 10px;
+      margin-bottom: 6px;
     }
 
-    .rating-player {
-      padding: 13px 0;
-      border-bottom: 1px solid #202a33;
+    .info-value {
+      font-size: 13px;
+      font-weight: bold;
     }
 
-    .rating-player:last-child {
-      border-bottom: none;
+    /* SECTION */
+
+    .section {
+      margin: 20px 16px 0;
     }
 
-    .player-top {
+    .section-title {
+      font-size: 17px;
+      font-weight: bold;
+      margin-bottom: 12px;
+    }
+
+    .event {
+      background: #121a22;
+      border-radius: 16px;
+      padding: 14px;
+
+      margin-bottom: 8px;
+
       display: flex;
       align-items: center;
       gap: 10px;
     }
 
-    .number {
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      background: #1c2730;
-      color: #00d26a;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: bold;
-      font-size: 11px;
+    .event-icon {
+      font-size: 21px;
     }
 
-    .player-info {
-      flex: 1;
-    }
-
-    .player-name {
-      font-weight: bold;
+    .event-text {
       font-size: 13px;
     }
 
-    .position {
-      color: #7d8b97;
-      font-size: 10px;
-      margin-top: 3px;
-    }
+    /* LOADING */
 
-    .rating {
-      min-width: 38px;
+    .loading {
       text-align: center;
-      padding: 5px;
-      border-radius: 8px;
-      background: rgba(0,210,106,.14);
-      color: #00d26a;
-      font-weight: bold;
-      font-size: 12px;
-    }
-
-    .rating-bar {
-      margin-top: 8px;
-      height: 4px;
-      background: #27333c;
-      border-radius: 10px;
-      overflow: hidden;
-    }
-
-    .rating-fill {
-      height: 100%;
-      background: #00d26a;
-    }
-
-    /* TEAM SWITCH */
-
-    .team-switch {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px;
-      margin-bottom: 15px;
-    }
-
-    .team-button {
-      border: 1px solid #27333c;
-      background: #18232b;
       color: #7d8b97;
-      border-radius: 12px;
-      padding: 10px;
+      padding: 50px 20px;
+    }
+
+    .spinner {
+      width: 32px;
+      height: 32px;
+
+      border: 3px solid #27333c;
+      border-top-color: #00d26a;
+
+      border-radius: 50%;
+
+      margin: 0 auto 12px;
+
+      animation: spin .8s linear infinite;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* ERROR */
+
+    .error {
+      margin: 20px 16px;
+
+      background: #301719;
+      color: #ff7777;
+
+      border-radius: 15px;
+      padding: 18px;
+
+      text-align: center;
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    /* BOTTOM NAV */
+
+    .bottom-nav {
+      position: fixed;
+
+      bottom: 0;
+      left: 50%;
+
+      transform: translateX(-50%);
+
+      width: min(650px, 100%);
+      height: 75px;
+
+      background: #10171d;
+
+      border-top: 1px solid #1d2730;
+
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+
+      z-index: 20;
+    }
+
+    .nav-item {
+      border: none;
+      background: transparent;
+
+      color: #7d8b97;
+
+      font-size: 11px;
       cursor: pointer;
     }
 
-    .team-button.active {
-      border-color: #00d26a;
+    .nav-item span {
+      display: block;
+      font-size: 22px;
+      margin-bottom: 4px;
+    }
+
+    .nav-item.active {
       color: #00d26a;
     }
 
+    @media(max-width:420px) {
+
+      .team-logo {
+        width: 62px;
+        height: 62px;
+      }
+
+      .team-name {
+        font-size: 12px;
+      }
+
+      .score {
+        font-size: 30px;
+      }
+    }
   </style>
 </head>
-
 
 <body>
 
 <div class="app">
 
-  <!-- HEADER -->
-
-  <div class="header">
-
-    <button class="back" onclick="goBack()">
-      ‹
-    </button>
-
-    <div class="header-title">
-      جزئیات بازی
-    </div>
-
-  </div>
-
-
-  <!-- MATCH -->
-
-  <div class="match-card">
-
-    <div class="league">
-      لیگ برتر ایران
-    </div>
-
-    <div class="live">
-      🔴 LIVE
-    </div>
-
-    <div class="teams">
-
-      <div>
-
-        <div class="team-logo">
-          🛡️
-        </div>
-
-        <div class="team-name">
-          پرسپولیس
-        </div>
-
-      </div>
-
-
-      <div>
-
-        <div class="score">
-          2 - 1
-        </div>
-
-        <div class="minute">
-          66'
-        </div>
-
-      </div>
-
-
-      <div>
-
-        <div class="team-logo">
-          🛡️
-        </div>
-
-        <div class="team-name">
-          استقلال
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-
-
-  <!-- TABS -->
-
-  <div class="tabs">
+  <header>
 
     <button
-      class="tab active"
-      onclick="showTab('events', this)">
-      رویدادها
+      class="back-btn"
+      onclick="window.location.href='index.html'">
+      ←
     </button>
 
-    <button
-      class="tab"
-      onclick="showTab('stats', this)">
-      آمار
-    </button>
+    <div class="brand">
+      <h1>football_live</h1>
+      <p>جزئیات بازی</p>
+    </div>
 
-    <button
-      class="tab"
-      onclick="showTab('lineup', this)">
-      ترکیب
-    </button>
+    <div class="header-space"></div>
 
-    <button
-      class="tab"
-      onclick="showTab('ratings', this)">
-      ⭐ نمرات
-    </button>
-
-  </div>
+  </header>
 
 
-  <!-- EVENTS -->
+  <div id="content">
 
-  <div id="events" class="tab-content">
+    <div class="loading">
 
-    <div class="section">
+      <div class="spinner"></div>
 
-      <div class="section-title">
-        ⚽ رویدادهای بازی
-      </div>
-
-      <div class="event">
-        <div class="event-time">12'</div>
-        <div class="event-icon">⚽</div>
-        <div class="event-player">
-          علی علیپور — گل پرسپولیس
-        </div>
-      </div>
-
-      <div class="event">
-        <div class="event-time">38'</div>
-        <div class="event-icon">🟨</div>
-        <div class="event-player">
-          بازیکن استقلال — کارت زرد
-        </div>
-      </div>
-
-      <div class="event">
-        <div class="event-time">54'</div>
-        <div class="event-icon">⚽</div>
-        <div class="event-player">
-          مهاجم پرسپولیس — گل
-        </div>
-      </div>
-
-      <div class="event">
-        <div class="event-time">61'</div>
-        <div class="event-icon">⚽</div>
-        <div class="event-player">
-          مهاجم استقلال — گل
-        </div>
-      </div>
+      در حال دریافت اطلاعات بازی...
 
     </div>
 
   </div>
-
-
-  <!-- STATS -->
-
-  <div id="stats" class="tab-content hidden">
-
-    <div class="section">
-
-      <div class="section-title">
-        📊 آمار بازی
-      </div>
-
-
-      <div class="stats-row">
-
-        <div class="stat-value stat-left">
-          58%
-        </div>
-
-        <div class="stat-name">
-          مالکیت توپ
-        </div>
-
-        <div class="stat-value stat-right">
-          42%
-        </div>
-
-      </div>
-
-
-      <div class="stats-row">
-
-        <div class="stat-value stat-left">
-          9
-        </div>
-
-        <div class="stat-name">
-          شوت
-        </div>
-
-        <div class="stat-value stat-right">
-          6
-        </div>
-
-      </div>
-
-
-      <div class="stats-row">
-
-        <div class="stat-value stat-left">
-          4
-        </div>
-
-        <div class="stat-name">
-          شوت در چارچوب
-        </div>
-
-        <div class="stat-value stat-right">
-          3
-        </div>
-
-      </div>
-
-
-      <div class="stats-row">
-
-        <div class="stat-value stat-left">
-          87%
-        </div>
-
-        <div class="stat-name">
-          پاس صحیح
-        </div>
-
-        <div class="stat-value stat-right">
-          82%
-        </div>
-
-      </div>
-
-
-      <div class="stats-row">
-
-        <div class="stat-value stat-left">
-          5
-        </div>
-
-        <div class="stat-name">
-          کرنر
-        </div>
-
-        <div class="stat-value stat-right">
-          2
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-
-
-  <!-- LINEUP -->
-
-  <div id="lineup" class="tab-content hidden">
-
-    <div class="section">
-
-      <div class="section-title">
-        👥 ترکیب پرسپولیس
-      </div>
-
-
-      <div class="team-switch">
-
-        <button
-          class="team-button active">
-          پرسپولیس
-        </button>
-
-        <button
-          class="team-button">
-          استقلال
-        </button>
-
-      </div>
-
-
-      <div class="formation">
-
-        <div class="pitch"></div>
-
-        <div class="pitch-circle"></div>
-
-
-        <div class="lineup">
-
-          <div class="line">
-
-            <div class="player-pitch">
-
-              <div class="player-ball">
-                9
-              </div>
-
-              علیپور
-
-            </div>
-
-          </div>
-
-
-          <div class="line">
-
-            <div class="player-pitch">
-
-              <div class="player-ball">
-                7
-              </div>
-
-              وینگر
-            </div>
-
-
-            <div class="player-pitch">
-
-              <div class="player-ball">
-                10
-              </div>
-
-              مهاجم
-            </div>
-
-
-            <div class="player-pitch">
-
-              <div class="player-ball">
-                11
-              </div>
-
-              وینگر
-            </div>
-
-          </div>
-
-
-          <div class="line">
-
-            <div class="player-pitch">
-
-              <div class="player-ball">
-                8
-              </div>
-
-              هافبک
-            </div>
-
-
-            <div class="player-pitch">
-
-              <div class="player-ball">
-                6
-              </div>
-
-              هافبک
-            </div>
-
-
-            <div class="player-pitch">
-
-              <div class="player-ball">
-                10
-              </div>
-
-              هافبک
-            </div>
-
-          </div>
-
-
-          <div class="line">
-
-            <div class="player-pitch">
-
-              <div class="player-ball">
-                2
-              </div>
-
-              مدافع
-            </div>
-
-
-            <div class="player-pitch">
-
-              <div class="player-ball">
-                4
-              </div>
-
-              مدافع
-            </div>
-
-
-            <div class="player-pitch">
-
-              <div class="player-ball">
-                5
-              </div>
-
-              مدافع
-            </div>
-
-
-            <div class="player-pitch">
-
-              <div class="player-ball">
-                3
-              </div>
-
-              مدافع
-            </div>
-
-          </div>
-
-
-          <div class="line">
-
-            <div class="player-pitch">
-
-              <div class="player-ball">
-                1
-              </div>
-
-              دروازه‌بان
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-
-
-  <!-- RATINGS -->
-
-  <div id="ratings" class="tab-content hidden">
-
-    <div class="section">
-
-      <div class="section-title">
-        ⭐ نمره زنده بازیکنان
-      </div>
-
-
-      <!-- BEST PLAYER -->
-
-      <div class="rating-summary">
-
-        <div class="best-player">
-
-          <div class="best-avatar">
-            9
-          </div>
-
-          <div>
-
-            <div class="best-title">
-              🔥 بهترین بازیکن تا این لحظه
-            </div>
-
-            <div class="best-name">
-              علی علیپور
-            </div>
-
-          </div>
-
-        </div>
-
-
-        <div class="best-rating">
-          8.7
-        </div>
-
-      </div>
-
-
-      <div class="team-rating-title">
-        پرسپولیس
-      </div>
-
-
-      <!-- PLAYER 1 -->
-
-      <div class="rating-player">
-
-        <div class="player-top">
-
-          <div class="number">
-            9
-          </div>
-
-          <div class="player-info">
-
-            <div class="player-name">
-              علی علیپور
-            </div>
-
-            <div class="position">
-              مهاجم
-            </div>
-
-          </div>
-
-          <div class="rating">
-            8.7
-          </div>
-
-        </div>
-
-
-        <div class="rating-bar">
-
-          <div
-            class="rating-fill"
-            style="width:87%">
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <!-- PLAYER 2 -->
-
-      <div class="rating-player">
-
-        <div class="player-top">
-
-          <div class="number">
-            10
-          </div>
-
-          <div class="player-info">
-
-            <div class="player-name">
-              هافبک تهاجمی
-            </div>
-
-            <div class="position">
-              هافبک
-            </div>
-
-          </div>
-
-          <div class="rating">
-            8.3
-          </div>
-
-        </div>
-
-
-        <div class="rating-bar">
-
-          <div
-            class="rating-fill"
-            style="width:83%">
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <!-- PLAYER 3 -->
-
-      <div class="rating-player">
-
-        <div class="player-top">
-
-          <div class="number">
-            7
-          </div>
-
-          <div class="player-info">
-
-            <div class="player-name">
-              وینگر راست
-            </div>
-
-            <div class="position">
-              وینگر
-            </div>
-
-          </div>
-
-          <div class="rating">
-            7.9
-          </div>
-
-        </div>
-
-
-        <div class="rating-bar">
-
-          <div
-            class="rating-fill"
-            style="width:79%">
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <!-- PLAYER 4 -->
-
-      <div class="rating-player">
-
-        <div class="player-top">
-
-          <div class="number">
-            8
-          </div>
-
-          <div class="player-info">
-
-            <div class="player-name">
-              هافبک میانی
-            </div>
-
-            <div class="position">
-              هافبک
-            </div>
-
-          </div>
-
-          <div class="rating">
-            7.6
-          </div>
-
-        </div>
-
-
-        <div class="rating-bar">
-
-          <div
-            class="rating-fill"
-            style="width:76%">
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <!-- PLAYER 5 -->
-
-      <div class="rating-player">
-
-        <div class="player-top">
-
-          <div class="number">
-            1
-          </div>
-
-          <div class="player-info">
-
-            <div class="player-name">
-              دروازه‌بان
-            </div>
-
-            <div class="position">
-              دروازه‌بان
-            </div>
-
-          </div>
-
-          <div class="rating">
-            7.4
-          </div>
-
-        </div>
-
-
-        <div class="rating-bar">
-
-          <div
-            class="rating-fill"
-            style="width:74%">
-          </div>
-
-        </div>
-
-      </div>
-
-
-    </div>
-
-  </div>
-
 
 </div>
 
 
+<nav class="bottom-nav">
+
+  <button
+    class="nav-item"
+    onclick="window.location.href='index.html'">
+
+    <span>🏠</span>
+    خانه
+
+  </button>
+
+
+  <button
+    class="nav-item active">
+
+    <span>⚽</span>
+    زنده
+
+  </button>
+
+
+  <button
+    class="nav-item"
+    onclick="window.location.href='index.html'">
+
+    <span>📅</span>
+    بازی‌ها
+
+  </button>
+
+
+  <button
+    class="nav-item"
+    onclick="window.location.href='index.html'">
+
+    <span>📰</span>
+    اخبار
+
+  </button>
+
+</nav>
+
+
 <script>
 
-  function goBack() {
+async function loadMatch() {
 
-    window.location.href =
-      "index.html";
+  const content =
+    document.getElementById("content");
 
-  }
+  try {
 
+    const response =
+      await fetch("./api/matches.json");
 
-  function showTab(
-    tabName,
-    button
-  ) {
-
-    const contents =
-      document.querySelectorAll(
-        ".tab-content"
-      );
-
-    contents.forEach(
-      content => {
-
-        content.classList.add(
-          "hidden"
-        );
-
-      }
-    );
-
-
-    const selected =
-      document.getElementById(
-        tabName
-      );
-
-    if (selected) {
-
-      selected.classList.remove(
-        "hidden"
-      );
-
+    if (!response.ok) {
+      throw new Error("matches.json پیدا نشد");
     }
 
+    const data =
+      await response.json();
 
-    const tabs =
-      document.querySelectorAll(
-        ".tab"
+    if (
+      !data.success ||
+      !data.match
+    ) {
+      throw new Error(
+        "ساختار matches.json صحیح نیست"
       );
+    }
 
-    tabs.forEach(
-      tab => {
-
-        tab.classList.remove(
-          "active"
-        );
-
-      }
-    );
+    const match = data.match;
 
 
-    button.classList.add(
-      "active"
-    );
+    const status =
+      match.status || "UNKNOWN";
+
+    const isLive =
+      status === "LIVE";
+
+
+    const homeLogo =
+      match.homeLogo
+      ? `<img src="${escapeHTML(match.homeLogo)}" alt="">`
+      : "⚽";
+
+
+    const awayLogo =
+      match.awayLogo
+      ? `<img src="${escapeHTML(match.awayLogo)}" alt="">`
+      : "⚽";
+
+
+    content.innerHTML = `
+
+      <div class="match-card">
+
+        ${
+          isLive
+          ? `<div class="live">🔴 LIVE</div>`
+          : `<div class="live"
+                    style="
+                    color:#7d8b97;
+                    background:#1c2730;">
+                    ${escapeHTML(status)}
+             </div>`
+        }
+
+
+        <div class="league">
+          ${escapeHTML(match.league || "لیگ نامشخص")}
+        </div>
+
+
+        <div class="teams">
+
+
+          <div class="team">
+
+            <div class="team-logo">
+              ${homeLogo}
+            </div>
+
+            <div class="team-name">
+              ${escapeHTML(match.homeTeam)}
+            </div>
+
+          </div>
+
+
+          <div>
+
+            <div class="score">
+              ${escapeHTML(match.homeScore)}
+              -
+              ${escapeHTML(match.awayScore)}
+            </div>
+
+            ${
+              isLive
+              ? `<div class="minute">
+                   ${escapeHTML(match.minute || "0")}'
+                 </div>`
+              : `<div class="minute"
+                         style="color:#7d8b97;">
+                   ${escapeHTML(match.time || "-")}
+                 </div>`
+            }
+
+          </div>
+
+
+          <div class="team">
+
+            <div class="team-logo">
+              ${awayLogo}
+            </div>
+
+            <div class="team-name">
+              ${escapeHTML(match.awayTeam)}
+            </div>
+
+          </div>
+
+
+        </div>
+
+
+        <div class="info">
+
+
+          <div class="info-item">
+
+            <div class="info-label">
+              🏟️ ورزشگاه
+            </div>
+
+            <div class="info-value">
+              ${escapeHTML(match.stadium || "-")}
+            </div>
+
+          </div>
+
+
+          <div class="info-item">
+
+            <div class="info-label">
+              📅 تاریخ
+            </div>
+
+            <div class="info-value">
+              ${escapeHTML(match.date || "-")}
+            </div>
+
+          </div>
+
+
+          <div class="info-item">
+
+            <div class="info-label">
+              🕐 ساعت
+            </div>
+
+            <div class="info-value">
+              ${escapeHTML(match.time || "-")}
+            </div>
+
+          </div>
+
+
+          <div class="info-item">
+
+            <div class="info-label">
+              🏆 مسابقات
+            </div>
+
+            <div class="info-value">
+              ${escapeHTML(match.league || "-")}
+            </div>
+
+          </div>
+
+
+        </div>
+
+      </div>
+
+
+      <section class="section">
+
+        <div class="section-title">
+          📋 رویدادهای بازی
+        </div>
+
+        <div class="event">
+
+          <div class="event-icon">
+            ⚽
+          </div>
+
+          <div class="event-text">
+            اطلاعات رویدادهای بازی به‌زودی اضافه می‌شود.
+          </div>
+
+        </div>
+
+      </section>
+
+    `;
 
   }
+
+  catch(error) {
+
+    console.error(error);
+
+    content.innerHTML = `
+
+      <div class="error">
+
+        ❌ دریافت اطلاعات بازی با مشکل مواجه شد.
+
+        <br>
+
+        لطفاً مطمئن شو فایل زیر وجود دارد:
+
+        <br>
+
+        <b>api/matches.json</b>
+
+      </div>
+
+    `;
+
+  }
+
+}
+
+
+/* جلوگیری از HTML Injection */
+
+function escapeHTML(value) {
+
+  if (
+    value === undefined ||
+    value === null
+  ) {
+    return "";
+  }
+
+  const div =
+    document.createElement("div");
+
+  div.textContent =
+    String(value);
+
+  return div.innerHTML;
+
+}
+
+
+loadMatch();
 
 </script>
 
-
 </body>
 </html>
+```
