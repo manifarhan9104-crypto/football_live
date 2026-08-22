@@ -995,7 +995,139 @@ function showMatches() {
 loadNews();
 
 </script>
+<script>
+async function loadMatches() {
+    try {
+        const response = await fetch("./api/matches.json");
 
+        if (!response.ok) {
+            throw new Error("API Error");
+        }
+
+        const data = await response.json();
+
+        console.log("Matches loaded:", data);
+
+        if (!data.success || !data.matches) {
+            throw new Error("ساختار API اشتباه است");
+        }
+
+        // پیدا کردن لیست بازی‌ها
+        const container =
+            document.querySelector("#matches") ||
+            document.querySelector(".matches") ||
+            document.querySelector(".match-list");
+
+        if (!container) {
+            console.warn("محل نمایش بازی‌ها پیدا نشد.");
+            return;
+        }
+
+        container.innerHTML = "";
+
+        data.matches.forEach(match => {
+
+            const homeScore =
+                match.homeScore ?? "-";
+
+            const awayScore =
+                match.awayScore ?? "-";
+
+            const status =
+                match.status === "IN_PLAY"
+                    ? "🔴 زنده"
+                    : match.status === "FINISHED"
+                    ? "پایان یافته"
+                    : "⏰ به‌زودی";
+
+            const card = document.createElement("div");
+
+            card.innerHTML = `
+                <div style="
+                    background:#121a22;
+                    border-radius:18px;
+                    padding:16px;
+                    margin-bottom:10px;
+                    cursor:pointer;
+                "
+                onclick="openMatch(${match.id})">
+
+                    <div style="
+                        text-align:center;
+                        color:#7d8b97;
+                        font-size:12px;
+                        margin-bottom:12px;
+                    ">
+                        ${match.league || ""}
+                    </div>
+
+                    <div style="
+                        display:flex;
+                        align-items:center;
+                        justify-content:space-between;
+                        gap:10px;
+                    ">
+
+                        <div style="text-align:center;flex:1">
+                            <img
+                                src="${match.homeLogo || ""}"
+                                style="width:45px;height:45px;object-fit:contain"
+                            >
+                            <div>${match.homeTeam}</div>
+                        </div>
+
+                        <div style="
+                            text-align:center;
+                            font-size:22px;
+                            font-weight:bold;
+                        ">
+                            ${homeScore} - ${awayScore}
+
+                            <div style="
+                                font-size:11px;
+                                color:#00d26a;
+                                margin-top:5px;
+                            ">
+                                ${status}
+                            </div>
+                        </div>
+
+                        <div style="text-align:center;flex:1">
+                            <img
+                                src="${match.awayLogo || ""}"
+                                style="width:45px;height:45px;object-fit:contain"
+                            >
+                            <div>${match.awayTeam}</div>
+                        </div>
+
+                    </div>
+
+                </div>
+            `;
+
+            container.appendChild(card);
+        });
+
+    } catch (error) {
+
+        console.error(error);
+
+        console.log(
+            "دریافت بازی‌ها از api/matches.json ناموفق بود."
+        );
+    }
+}
+
+
+function openMatch(id) {
+    window.location.href =
+        "match.html?id=" + id;
+}
+
+
+loadMatches();
+
+</script>
 </body>
 
 </html>
