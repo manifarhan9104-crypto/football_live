@@ -1,0 +1,437 @@
+```html
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>اخبار فوتبال | football_live</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #080d12;
+      color: white;
+      min-height: 100vh;
+    }
+
+    .app {
+      max-width: 650px;
+      margin: auto;
+      padding-bottom: 100px;
+    }
+
+    header {
+      padding: 20px 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .back-btn {
+      width: 43px;
+      height: 43px;
+      border: none;
+      border-radius: 13px;
+      background: #121a22;
+      color: white;
+      font-size: 22px;
+      cursor: pointer;
+    }
+
+    .brand {
+      flex: 1;
+    }
+
+    .brand h1 {
+      font-size: 20px;
+    }
+
+    .brand p {
+      color: #7d8b97;
+      font-size: 12px;
+      margin-top: 5px;
+    }
+
+    .news-list {
+      padding: 0 16px;
+    }
+
+    .news-card {
+      background: #121a22;
+      border: 1px solid #1d2730;
+      border-radius: 18px;
+      padding: 16px;
+      margin-bottom: 12px;
+      cursor: pointer;
+      transition: .2s;
+    }
+
+    .news-card:hover {
+      transform: translateY(-2px);
+      border-color: #00d26a;
+    }
+
+    .news-title {
+      font-size: 16px;
+      font-weight: bold;
+      line-height: 1.7;
+    }
+
+    .news-description {
+      color: #9aa6af;
+      font-size: 13px;
+      line-height: 1.8;
+      margin-top: 8px;
+    }
+
+    .news-meta {
+      color: #00d26a;
+      font-size: 11px;
+      margin-top: 12px;
+    }
+
+    .loading {
+      text-align: center;
+      color: #7d8b97;
+      padding: 60px 20px;
+    }
+
+    .spinner {
+      width: 32px;
+      height: 32px;
+      border: 3px solid #27333c;
+      border-top-color: #00d26a;
+      border-radius: 50%;
+      margin: 0 auto 12px;
+      animation: spin .8s linear infinite;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .error {
+      margin: 20px 16px;
+      background: #301719;
+      color: #ff7777;
+      border-radius: 15px;
+      padding: 18px;
+      text-align: center;
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    .empty {
+      text-align: center;
+      color: #7d8b97;
+      padding: 50px 20px;
+    }
+
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(650px, 100%);
+      height: 75px;
+      background: #10171d;
+      border-top: 1px solid #1d2730;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      z-index: 20;
+    }
+
+    .nav-item {
+      border: none;
+      background: transparent;
+      color: #7d8b97;
+      font-size: 11px;
+      cursor: pointer;
+    }
+
+    .nav-item span {
+      display: block;
+      font-size: 22px;
+      margin-bottom: 4px;
+    }
+
+    .nav-item.active {
+      color: #00d26a;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="app">
+
+    <header>
+
+      <button
+        class="back-btn"
+        onclick="window.location.href='index.html'">
+        ←
+      </button>
+
+      <div class="brand">
+        <h1>📰 اخبار فوتبال</h1>
+        <p>آخرین اخبار فوتبال</p>
+      </div>
+
+    </header>
+
+    <div id="content">
+
+      <div class="loading">
+        <div class="spinner"></div>
+        در حال دریافت اخبار...
+      </div>
+
+    </div>
+
+  </div>
+
+  <nav class="bottom-nav">
+
+    <button
+      class="nav-item"
+      onclick="window.location.href='index.html'">
+      <span>🏠</span>
+      خانه
+    </button>
+
+    <button
+      class="nav-item"
+      onclick="window.location.href='index.html'">
+      <span>⚽</span>
+      بازی‌ها
+    </button>
+
+    <button
+      class="nav-item"
+      onclick="window.location.href='index.html'">
+      <span>📅</span>
+      برنامه
+    </button>
+
+    <button class="nav-item active">
+      <span>📰</span>
+      اخبار
+    </button>
+
+  </nav>
+
+  <script>
+
+    async function loadNews() {
+
+      const content =
+        document.getElementById("content");
+
+      try {
+
+        const response =
+          await fetch("./api/news.json");
+
+        if (!response.ok) {
+          throw new Error("news.json پیدا نشد");
+        }
+
+        const data =
+          await response.json();
+
+        let news = [];
+
+        if (Array.isArray(data)) {
+          news = data;
+        }
+
+        else if (Array.isArray(data.news)) {
+          news = data.news;
+        }
+
+        else if (Array.isArray(data.articles)) {
+          news = data.articles;
+        }
+
+        if (news.length === 0) {
+
+          content.innerHTML = `
+            <div class="empty">
+              📰 هنوز خبری ثبت نشده است.
+            </div>
+          `;
+
+          return;
+        }
+
+        content.innerHTML = `
+          <div class="news-list">
+            ${news.map((item, index) => {
+
+              const title =
+                item.title ||
+                item.name ||
+                "بدون عنوان";
+
+              const description =
+                item.description ||
+                item.summary ||
+                item.content ||
+                "";
+
+              const date =
+                item.date ||
+                item.publishedAt ||
+                item.time ||
+                "";
+
+              return `
+
+                <article
+                  class="news-card"
+                  onclick="openNews(${index})">
+
+                  <div class="news-title">
+                    ${escapeHTML(title)}
+                  </div>
+
+                  ${
+                    description
+                    ? `
+                      <div class="news-description">
+                        ${escapeHTML(description)}
+                      </div>
+                    `
+                    : ""
+                  }
+
+                  ${
+                    date
+                    ? `
+                      <div class="news-meta">
+                        🕐 ${escapeHTML(date)}
+                      </div>
+                    `
+                    : ""
+                  }
+
+                </article>
+
+              `;
+
+            }).join("")}
+          </div>
+        `;
+
+        window.newsData = news;
+
+      }
+
+      catch(error) {
+
+        console.error(error);
+
+        content.innerHTML = `
+
+          <div class="error">
+
+            ❌ دریافت اخبار با مشکل مواجه شد.
+
+            <br><br>
+
+            مطمئن شو این فایل وجود دارد:
+
+            <br>
+
+            <b>api/news.json</b>
+
+          </div>
+
+        `;
+
+      }
+
+    }
+
+
+    function openNews(index) {
+
+      const news =
+        window.newsData[index];
+
+      if (!news) return;
+
+      const title =
+        news.title ||
+        news.name ||
+        "خبر فوتبال";
+
+      const description =
+        news.description ||
+        news.summary ||
+        news.content ||
+        "";
+
+      const url =
+        news.url ||
+        news.link ||
+        "";
+
+      if (url) {
+
+        window.open(
+          url,
+          "_blank"
+        );
+
+        return;
+      }
+
+      alert(
+        title +
+        "\n\n" +
+        description
+      );
+
+    }
+
+
+    function escapeHTML(value) {
+
+      if (
+        value === undefined ||
+        value === null
+      ) {
+        return "";
+      }
+
+      const div =
+        document.createElement("div");
+
+      div.textContent =
+        String(value);
+
+      return div.innerHTML;
+
+    }
+
+
+    loadNews();
+
+  </script>
+
+</body>
+
+</html>
+```
