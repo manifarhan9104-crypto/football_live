@@ -1,21 +1,11 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
-
 <head>
-
   <meta charset="UTF-8">
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0">
-
-  <title>
-    جزئیات بازی | football_live
-  </title>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>football_live | جزئیات بازی</title>
 
   <style>
-
     * {
       box-sizing: border-box;
       margin: 0;
@@ -23,28 +13,27 @@
       font-family: Arial, sans-serif;
     }
 
-
     body {
       background: #080d12;
-      color: white;
+      color: #fff;
     }
 
-
     .app {
-      max-width: 600px;
+      max-width: 650px;
       min-height: 100vh;
       margin: auto;
       padding-bottom: 40px;
     }
 
+    /* HEADER */
 
     .header {
-      padding: 18px;
+      height: 70px;
+      padding: 12px 16px;
       display: flex;
       align-items: center;
-      gap: 15px;
+      gap: 14px;
     }
-
 
     .back {
       width: 42px;
@@ -52,504 +41,454 @@
       border: none;
       border-radius: 13px;
       background: #121a22;
-      color: white;
+      color: #fff;
       font-size: 25px;
       cursor: pointer;
     }
-
 
     .header-title {
       font-size: 19px;
       font-weight: bold;
     }
 
+    /* MATCH */
 
-    .match-header {
-      margin: 10px 16px 0;
-      padding: 25px 18px;
+    .match-card {
+      margin: 10px 16px;
+      padding: 24px 16px;
       border-radius: 24px;
-
-      background:
-        linear-gradient(
-          145deg,
-          #10251a,
-          #10171d
-        );
-
-      border:
-        1px solid
-        rgba(0, 210, 106, 0.3);
-
+      background: linear-gradient(145deg, #10251a, #10171d);
+      border: 1px solid rgba(0, 210, 106, .3);
       text-align: center;
     }
 
-
     .league {
-      color: #75818d;
+      color: #7d8b97;
       font-size: 12px;
       margin-bottom: 12px;
     }
 
-
     .live {
       display: inline-block;
-
-      color: #ff5252;
-
-      background:
-        rgba(255, 50, 50, 0.12);
-
-      padding: 6px 12px;
-
+      color: #ff5555;
+      background: rgba(255, 50, 50, .12);
+      padding: 6px 13px;
       border-radius: 20px;
-
       font-size: 12px;
-
       font-weight: bold;
     }
-
 
     .teams {
+      margin-top: 23px;
       display: grid;
-
-      grid-template-columns:
-        1fr auto 1fr;
-
+      grid-template-columns: 1fr auto 1fr;
       align-items: center;
-
-      gap: 12px;
-
-      margin-top: 22px;
+      gap: 10px;
     }
-
 
     .team-logo {
-      width: 65px;
-      height: 65px;
-
+      width: 68px;
+      height: 68px;
       border-radius: 50%;
-
       background: #1c2730;
-
-      display: flex;
-
-      align-items: center;
-
-      justify-content: center;
-
-      font-size: 31px;
-
       margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
     }
-
 
     .team-name {
-      font-weight: bold;
       margin-top: 9px;
+      font-size: 14px;
+      font-weight: bold;
     }
 
-
     .score {
-      font-size: 34px;
+      font-size: 36px;
       font-weight: bold;
       direction: ltr;
     }
 
-
     .minute {
       color: #00d26a;
+      font-size: 13px;
       font-weight: bold;
       margin-top: 5px;
     }
 
+    /* TABS */
 
     .tabs {
-
-      display: grid;
-
-      grid-template-columns:
-        repeat(4, 1fr);
-
-      gap: 6px;
-
       margin: 18px 16px;
-
-      background: #10171d;
-
       padding: 5px;
-
-      border-radius: 15px;
+      border-radius: 16px;
+      background: #10171d;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 5px;
     }
 
-
     .tab {
-
       border: none;
-
       background: transparent;
-
-      color: #75818d;
-
-      padding: 11px 5px;
-
+      color: #7d8b97;
+      padding: 12px 3px;
       border-radius: 11px;
-
       cursor: pointer;
-
       font-size: 11px;
     }
 
-
     .tab.active {
-
       background: #00d26a;
-
       color: #06100b;
-
       font-weight: bold;
     }
 
+    /* SECTIONS */
 
     .section {
-
-      margin:
-        0 16px 15px;
-
+      margin: 0 16px 15px;
+      padding: 18px;
       background: #121a22;
-
-      border-radius: 19px;
-
-      padding: 17px;
+      border-radius: 20px;
     }
-
 
     .section-title {
-
       font-size: 16px;
-
       font-weight: bold;
-
-      margin-bottom: 15px;
+      margin-bottom: 16px;
     }
 
+    .hidden {
+      display: none !important;
+    }
+
+    /* EVENTS */
 
     .event {
-
       display: flex;
-
       align-items: center;
-
-      gap: 10px;
-
-      padding: 11px 0;
-
-      border-bottom:
-        1px solid #202a33;
+      gap: 11px;
+      padding: 13px 0;
+      border-bottom: 1px solid #202a33;
     }
-
 
     .event:last-child {
       border-bottom: none;
     }
 
-
     .event-time {
-
+      width: 42px;
       color: #00d26a;
-
-      width: 40px;
-
       font-weight: bold;
+      direction: ltr;
     }
-
 
     .event-icon {
-      font-size: 19px;
+      font-size: 20px;
     }
-
 
     .event-player {
       flex: 1;
+      font-size: 13px;
     }
 
+    /* STATS */
 
     .stats-row {
-
       display: grid;
-
-      grid-template-columns:
-        1fr auto 1fr;
-
-      gap: 10px;
-
+      grid-template-columns: 1fr 100px 1fr;
       align-items: center;
-
-      margin: 15px 0;
+      gap: 10px;
+      margin: 17px 0;
     }
-
 
     .stat-value {
-
-      font-weight: bold;
-
       font-size: 15px;
+      font-weight: bold;
     }
-
-
-    .stat-name {
-
-      color: #75818d;
-
-      font-size: 11px;
-
-      text-align: center;
-    }
-
 
     .stat-left {
       text-align: right;
     }
 
-
     .stat-right {
       text-align: left;
     }
 
-
-    .player {
-
-      display: flex;
-
-      align-items: center;
-
-      gap: 10px;
-
-      padding: 12px 0;
-
-      border-bottom:
-        1px solid #202a33;
+    .stat-name {
+      color: #7d8b97;
+      text-align: center;
+      font-size: 11px;
     }
 
-
-    .player:last-child {
-      border-bottom: none;
+    .progress {
+      height: 5px;
+      background: #27333c;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-top: 6px;
     }
 
-
-    .player-number {
-
-      width: 32px;
-
-      height: 32px;
-
-      border-radius: 50%;
-
-      background: #1c2730;
-
-      display: flex;
-
-      align-items: center;
-
-      justify-content: center;
-
-      color: #00d26a;
-
-      font-weight: bold;
-
-      font-size: 12px;
+    .progress-left {
+      height: 100%;
+      background: #00d26a;
+      float: right;
     }
 
-
-    .player-name {
-      flex: 1;
-      font-weight: bold;
-    }
-
-
-    .rating {
-
-      background:
-        rgba(0, 210, 106, 0.15);
-
-      color: #00d26a;
-
-      padding: 5px 8px;
-
-      border-radius: 8px;
-
-      font-weight: bold;
-
-      font-size: 12px;
-    }
-
-
-    .hidden {
-      display: none;
-    }
-
+    /* LINEUP */
 
     .formation {
-
+      min-height: 390px;
+      padding: 20px 10px;
+      border-radius: 18px;
       background: #0d351f;
-
-      border-radius: 16px;
-
-      min-height: 330px;
-
-      padding: 20px;
-
       position: relative;
-
       overflow: hidden;
     }
 
-
-    .pitch-line {
-
+    .pitch {
       position: absolute;
-
-      inset: 20px;
-
-      border:
-        1px solid
-        rgba(255,255,255,0.15);
-
-      border-radius: 10px;
+      inset: 15px;
+      border: 1px solid rgba(255,255,255,.16);
+      border-radius: 12px;
     }
 
-
-    .formation-title {
-
-      text-align: center;
-
-      margin-bottom: 15px;
-
-      font-size: 13px;
-
-      color: #9aa7b2;
-    }
-
-
-    .formation-players {
-
-      position: relative;
-
-      height: 270px;
-
-      display: flex;
-
-      flex-direction: column;
-
-      justify-content: space-around;
-
-      z-index: 2;
-    }
-
-
-    .formation-row {
-
-      display: flex;
-
-      justify-content:
-        space-around;
-    }
-
-
-    .formation-player {
-
-      text-align: center;
-
-      font-size: 10px;
-    }
-
-
-    .formation-player .circle {
-
-      width: 35px;
-
-      height: 35px;
-
+    .pitch-circle {
+      position: absolute;
+      width: 80px;
+      height: 80px;
+      border: 1px solid rgba(255,255,255,.16);
       border-radius: 50%;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
 
-      background: #00d26a;
-
-      color: #06100b;
-
+    .lineup {
+      position: relative;
+      z-index: 2;
+      min-height: 350px;
       display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+    }
 
-      align-items: center;
+    .line {
+      display: flex;
+      justify-content: space-around;
+    }
 
-      justify-content: center;
+    .player-pitch {
+      text-align: center;
+      font-size: 10px;
+      min-width: 55px;
+    }
 
+    .player-ball {
+      width: 38px;
+      height: 38px;
       margin: auto;
+      border-radius: 50%;
+      background: #00d26a;
+      color: #06100b;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      border: 2px solid #fff;
+    }
 
+    /* PLAYER RATINGS */
+
+    .rating-summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px;
+      border-radius: 15px;
+      background: #18232b;
+      margin-bottom: 15px;
+    }
+
+    .best-player {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .best-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: #00d26a;
+      color: #06100b;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
       font-weight: bold;
     }
 
-  </style>
+    .best-title {
+      color: #7d8b97;
+      font-size: 10px;
+      margin-bottom: 5px;
+    }
 
+    .best-name {
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    .best-rating {
+      color: #00d26a;
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    .team-rating-title {
+      color: #7d8b97;
+      font-size: 11px;
+      margin-bottom: 10px;
+    }
+
+    .rating-player {
+      padding: 13px 0;
+      border-bottom: 1px solid #202a33;
+    }
+
+    .rating-player:last-child {
+      border-bottom: none;
+    }
+
+    .player-top {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .number {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: #1c2730;
+      color: #00d26a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 11px;
+    }
+
+    .player-info {
+      flex: 1;
+    }
+
+    .player-name {
+      font-weight: bold;
+      font-size: 13px;
+    }
+
+    .position {
+      color: #7d8b97;
+      font-size: 10px;
+      margin-top: 3px;
+    }
+
+    .rating {
+      min-width: 38px;
+      text-align: center;
+      padding: 5px;
+      border-radius: 8px;
+      background: rgba(0,210,106,.14);
+      color: #00d26a;
+      font-weight: bold;
+      font-size: 12px;
+    }
+
+    .rating-bar {
+      margin-top: 8px;
+      height: 4px;
+      background: #27333c;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .rating-fill {
+      height: 100%;
+      background: #00d26a;
+    }
+
+    /* TEAM SWITCH */
+
+    .team-switch {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-bottom: 15px;
+    }
+
+    .team-button {
+      border: 1px solid #27333c;
+      background: #18232b;
+      color: #7d8b97;
+      border-radius: 12px;
+      padding: 10px;
+      cursor: pointer;
+    }
+
+    .team-button.active {
+      border-color: #00d26a;
+      color: #00d26a;
+    }
+
+  </style>
 </head>
 
 
 <body>
 
-
 <div class="app">
 
+  <!-- HEADER -->
 
   <div class="header">
 
-    <button
-      class="back"
-      onclick="goBack()">
-
+    <button class="back" onclick="goBack()">
       ‹
-
     </button>
 
-
     <div class="header-title">
-
       جزئیات بازی
-
     </div>
 
   </div>
 
 
+  <!-- MATCH -->
 
-  <div class="match-header">
-
+  <div class="match-card">
 
     <div class="league">
-
       لیگ برتر ایران
-
     </div>
-
 
     <div class="live">
-
       🔴 LIVE
-
     </div>
 
-
     <div class="teams">
-
 
       <div>
 
         <div class="team-logo">
-
           🛡️
-
         </div>
 
         <div class="team-name">
-
           پرسپولیس
-
         </div>
 
       </div>
@@ -558,15 +497,11 @@
       <div>
 
         <div class="score">
-
           2 - 1
-
         </div>
 
         <div class="minute">
-
           66'
-
         </div>
 
       </div>
@@ -575,151 +510,106 @@
       <div>
 
         <div class="team-logo">
-
           🛡️
-
         </div>
 
         <div class="team-name">
-
           استقلال
-
         </div>
 
       </div>
-
 
     </div>
 
   </div>
 
 
+  <!-- TABS -->
 
   <div class="tabs">
-
 
     <button
       class="tab active"
       onclick="showTab('events', this)">
-
       رویدادها
-
     </button>
-
 
     <button
       class="tab"
       onclick="showTab('stats', this)">
-
       آمار
-
     </button>
-
 
     <button
       class="tab"
       onclick="showTab('lineup', this)">
-
       ترکیب
-
     </button>
-
 
     <button
       class="tab"
       onclick="showTab('ratings', this)">
-
       ⭐ نمرات
-
     </button>
-
 
   </div>
 
 
+  <!-- EVENTS -->
 
-  <div
-    id="events"
-    class="tab-content">
-
+  <div id="events" class="tab-content">
 
     <div class="section">
 
       <div class="section-title">
-
         ⚽ رویدادهای بازی
-
       </div>
 
-
       <div class="event">
-
-        <div class="event-time">
-          12'
-        </div>
-
-        <div class="event-icon">
-          ⚽
-        </div>
-
+        <div class="event-time">12'</div>
+        <div class="event-icon">⚽</div>
         <div class="event-player">
-          علی علیپور — گل
+          علی علیپور — گل پرسپولیس
         </div>
-
       </div>
 
-
       <div class="event">
-
-        <div class="event-time">
-          38'
-        </div>
-
-        <div class="event-icon">
-          🟨
-        </div>
-
+        <div class="event-time">38'</div>
+        <div class="event-icon">🟨</div>
         <div class="event-player">
           بازیکن استقلال — کارت زرد
         </div>
-
       </div>
 
-
       <div class="event">
-
-        <div class="event-time">
-          54'
-        </div>
-
-        <div class="event-icon">
-          ⚽
-        </div>
-
+        <div class="event-time">54'</div>
+        <div class="event-icon">⚽</div>
         <div class="event-player">
           مهاجم پرسپولیس — گل
         </div>
-
       </div>
 
+      <div class="event">
+        <div class="event-time">61'</div>
+        <div class="event-icon">⚽</div>
+        <div class="event-player">
+          مهاجم استقلال — گل
+        </div>
+      </div>
 
     </div>
 
   </div>
 
 
+  <!-- STATS -->
 
-  <div
-    id="stats"
-    class="tab-content hidden">
-
+  <div id="stats" class="tab-content hidden">
 
     <div class="section">
 
       <div class="section-title">
-
         📊 آمار بازی
-
       </div>
 
 
@@ -791,184 +681,202 @@
       </div>
 
 
+      <div class="stats-row">
+
+        <div class="stat-value stat-left">
+          5
+        </div>
+
+        <div class="stat-name">
+          کرنر
+        </div>
+
+        <div class="stat-value stat-right">
+          2
+        </div>
+
+      </div>
+
     </div>
 
   </div>
 
 
+  <!-- LINEUP -->
 
-  <div
-    id="lineup"
-    class="tab-content hidden">
-
+  <div id="lineup" class="tab-content hidden">
 
     <div class="section">
 
       <div class="section-title">
-
         👥 ترکیب پرسپولیس
+      </div>
+
+
+      <div class="team-switch">
+
+        <button
+          class="team-button active">
+          پرسپولیس
+        </button>
+
+        <button
+          class="team-button">
+          استقلال
+        </button>
 
       </div>
 
 
       <div class="formation">
 
+        <div class="pitch"></div>
 
-        <div class="pitch-line"></div>
-
-
-        <div class="formation-title">
-
-          ترکیب 4-3-3
-
-        </div>
+        <div class="pitch-circle"></div>
 
 
-        <div class="formation-players">
+        <div class="lineup">
 
+          <div class="line">
 
-          <div class="formation-row">
+            <div class="player-pitch">
 
-            <div class="formation-player">
-
-              <div class="circle">
-                1
+              <div class="player-ball">
+                9
               </div>
 
-              حامد
+              علیپور
 
             </div>
 
           </div>
 
 
-          <div class="formation-row">
+          <div class="line">
 
+            <div class="player-pitch">
 
-            <div class="formation-player">
-
-              <div class="circle">
-                2
-              </div>
-
-              مدافع
-
-            </div>
-
-
-            <div class="formation-player">
-
-              <div class="circle">
-                4
-              </div>
-
-              مدافع
-
-            </div>
-
-
-            <div class="formation-player">
-
-              <div class="circle">
-                5
-              </div>
-
-              مدافع
-
-            </div>
-
-
-            <div class="formation-player">
-
-              <div class="circle">
-                3
-              </div>
-
-              مدافع
-
-            </div>
-
-
-          </div>
-
-
-          <div class="formation-row">
-
-
-            <div class="formation-player">
-
-              <div class="circle">
-                8
-              </div>
-
-              هافبک
-
-            </div>
-
-
-            <div class="formation-player">
-
-              <div class="circle">
-                6
-              </div>
-
-              هافبک
-
-            </div>
-
-
-            <div class="formation-player">
-
-              <div class="circle">
-                10
-              </div>
-
-              هافبک
-
-            </div>
-
-
-          </div>
-
-
-          <div class="formation-row">
-
-
-            <div class="formation-player">
-
-              <div class="circle">
+              <div class="player-ball">
                 7
               </div>
 
               وینگر
-
             </div>
 
 
-            <div class="formation-player">
+            <div class="player-pitch">
 
-              <div class="circle">
-                9
+              <div class="player-ball">
+                10
               </div>
 
               مهاجم
-
             </div>
 
 
-            <div class="formation-player">
+            <div class="player-pitch">
 
-              <div class="circle">
+              <div class="player-ball">
                 11
               </div>
 
               وینگر
-
             </div>
-
 
           </div>
 
+
+          <div class="line">
+
+            <div class="player-pitch">
+
+              <div class="player-ball">
+                8
+              </div>
+
+              هافبک
+            </div>
+
+
+            <div class="player-pitch">
+
+              <div class="player-ball">
+                6
+              </div>
+
+              هافبک
+            </div>
+
+
+            <div class="player-pitch">
+
+              <div class="player-ball">
+                10
+              </div>
+
+              هافبک
+            </div>
+
+          </div>
+
+
+          <div class="line">
+
+            <div class="player-pitch">
+
+              <div class="player-ball">
+                2
+              </div>
+
+              مدافع
+            </div>
+
+
+            <div class="player-pitch">
+
+              <div class="player-ball">
+                4
+              </div>
+
+              مدافع
+            </div>
+
+
+            <div class="player-pitch">
+
+              <div class="player-ball">
+                5
+              </div>
+
+              مدافع
+            </div>
+
+
+            <div class="player-pitch">
+
+              <div class="player-ball">
+                3
+              </div>
+
+              مدافع
+            </div>
+
+          </div>
+
+
+          <div class="line">
+
+            <div class="player-pitch">
+
+              <div class="player-ball">
+                1
+              </div>
+
+              دروازه‌بان
+
+            </div>
+
+          </div>
 
         </div>
 
@@ -979,85 +887,254 @@
   </div>
 
 
+  <!-- RATINGS -->
 
-  <div
-    id="ratings"
-    class="tab-content hidden">
-
+  <div id="ratings" class="tab-content hidden">
 
     <div class="section">
 
-
       <div class="section-title">
-
-        ⭐ نمره بازیکنان
-
+        ⭐ نمره زنده بازیکنان
       </div>
 
 
-      <div class="player">
+      <!-- BEST PLAYER -->
 
-        <div class="player-number">
-          9
+      <div class="rating-summary">
+
+        <div class="best-player">
+
+          <div class="best-avatar">
+            9
+          </div>
+
+          <div>
+
+            <div class="best-title">
+              🔥 بهترین بازیکن تا این لحظه
+            </div>
+
+            <div class="best-name">
+              علی علیپور
+            </div>
+
+          </div>
+
         </div>
 
-        <div class="player-name">
-          علی علیپور
-        </div>
 
-        <div class="rating">
+        <div class="best-rating">
           8.7
         </div>
 
       </div>
 
 
-      <div class="player">
+      <div class="team-rating-title">
+        پرسپولیس
+      </div>
 
-        <div class="player-number">
-          10
+
+      <!-- PLAYER 1 -->
+
+      <div class="rating-player">
+
+        <div class="player-top">
+
+          <div class="number">
+            9
+          </div>
+
+          <div class="player-info">
+
+            <div class="player-name">
+              علی علیپور
+            </div>
+
+            <div class="position">
+              مهاجم
+            </div>
+
+          </div>
+
+          <div class="rating">
+            8.7
+          </div>
+
         </div>
 
-        <div class="player-name">
-          بازیکن پرسپولیس
-        </div>
 
-        <div class="rating">
-          8.3
+        <div class="rating-bar">
+
+          <div
+            class="rating-fill"
+            style="width:87%">
+          </div>
+
         </div>
 
       </div>
 
 
-      <div class="player">
+      <!-- PLAYER 2 -->
 
-        <div class="player-number">
-          7
+      <div class="rating-player">
+
+        <div class="player-top">
+
+          <div class="number">
+            10
+          </div>
+
+          <div class="player-info">
+
+            <div class="player-name">
+              هافبک تهاجمی
+            </div>
+
+            <div class="position">
+              هافبک
+            </div>
+
+          </div>
+
+          <div class="rating">
+            8.3
+          </div>
+
         </div>
 
-        <div class="player-name">
-          وینگر پرسپولیس
-        </div>
 
-        <div class="rating">
-          7.9
+        <div class="rating-bar">
+
+          <div
+            class="rating-fill"
+            style="width:83%">
+          </div>
+
         </div>
 
       </div>
 
 
-      <div class="player">
+      <!-- PLAYER 3 -->
 
-        <div class="player-number">
-          1
+      <div class="rating-player">
+
+        <div class="player-top">
+
+          <div class="number">
+            7
+          </div>
+
+          <div class="player-info">
+
+            <div class="player-name">
+              وینگر راست
+            </div>
+
+            <div class="position">
+              وینگر
+            </div>
+
+          </div>
+
+          <div class="rating">
+            7.9
+          </div>
+
         </div>
 
-        <div class="player-name">
-          دروازه‌بان
+
+        <div class="rating-bar">
+
+          <div
+            class="rating-fill"
+            style="width:79%">
+          </div>
+
         </div>
 
-        <div class="rating">
-          7.6
+      </div>
+
+
+      <!-- PLAYER 4 -->
+
+      <div class="rating-player">
+
+        <div class="player-top">
+
+          <div class="number">
+            8
+          </div>
+
+          <div class="player-info">
+
+            <div class="player-name">
+              هافبک میانی
+            </div>
+
+            <div class="position">
+              هافبک
+            </div>
+
+          </div>
+
+          <div class="rating">
+            7.6
+          </div>
+
+        </div>
+
+
+        <div class="rating-bar">
+
+          <div
+            class="rating-fill"
+            style="width:76%">
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- PLAYER 5 -->
+
+      <div class="rating-player">
+
+        <div class="player-top">
+
+          <div class="number">
+            1
+          </div>
+
+          <div class="player-info">
+
+            <div class="player-name">
+              دروازه‌بان
+            </div>
+
+            <div class="position">
+              دروازه‌بان
+            </div>
+
+          </div>
+
+          <div class="rating">
+            7.4
+          </div>
+
+        </div>
+
+
+        <div class="rating-bar">
+
+          <div
+            class="rating-fill"
+            style="width:74%">
+          </div>
+
         </div>
 
       </div>
@@ -1071,73 +1148,75 @@
 </div>
 
 
-
 <script>
 
+  function goBack() {
 
-function goBack() {
+    window.location.href =
+      "index.html";
 
-  window.location.href =
-    "index.html";
-
-}
-
-
-function showTab(
-  tabName,
-  button
-) {
+  }
 
 
-  const contents =
-    document.querySelectorAll(
-      ".tab-content"
+  function showTab(
+    tabName,
+    button
+  ) {
+
+    const contents =
+      document.querySelectorAll(
+        ".tab-content"
+      );
+
+    contents.forEach(
+      content => {
+
+        content.classList.add(
+          "hidden"
+        );
+
+      }
     );
 
 
-  contents.forEach(
-    content => {
+    const selected =
+      document.getElementById(
+        tabName
+      );
 
-      content.classList.add(
+    if (selected) {
+
+      selected.classList.remove(
         "hidden"
       );
 
     }
-  );
 
 
-  document
-    .getElementById(tabName)
-    .classList.remove("hidden");
+    const tabs =
+      document.querySelectorAll(
+        ".tab"
+      );
 
+    tabs.forEach(
+      tab => {
 
-  const tabs =
-    document.querySelectorAll(
-      ".tab"
+        tab.classList.remove(
+          "active"
+        );
+
+      }
     );
 
 
-  tabs.forEach(
-    tab => {
+    button.classList.add(
+      "active"
+    );
 
-      tab.classList.remove(
-        "active"
-      );
-
-    }
-  );
-
-
-  button.classList.add(
-    "active"
-  );
-
-}
-
+  }
 
 </script>
 
 
 </body>
-
 </html>
