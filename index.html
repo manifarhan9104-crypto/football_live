@@ -1,779 +1,358 @@
+```html
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 
 <head>
-<meta charset="UTF-8">
-
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
-
-<title>football_live</title>
-
-<style>
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: Arial, sans-serif;
-}
-
-body {
-  background: #080d12;
-  color: white;
-  min-height: 100vh;
-}
-
-.app {
-  max-width: 650px;
-  margin: auto;
-  padding-bottom: 95px;
-}
-
-/* HEADER */
-
-header {
-  padding: 18px 16px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.logo {
-  width: 50px;
-  height: 50px;
-  border-radius: 16px;
-  background: #00d26a;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 27px;
-  box-shadow: 0 5px 20px rgba(0, 210, 106, .2);
-}
-
-.brand h1 {
-  font-size: 21px;
-}
-
-.brand p {
-  font-size: 11px;
-  color: #7d8b97;
-  margin-top: 4px;
-}
-
-.notification {
-  width: 43px;
-  height: 43px;
-  border-radius: 13px;
-  background: #121a22;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 20px;
-  cursor: pointer;
-}
-
-/* SECTION */
-
-.section {
-  padding: 0 16px;
-  margin-top: 12px;
-}
-
-.section-title {
-  font-size: 18px;
-  font-weight: bold;
-  margin-bottom: 13px;
-}
-
-/* LIVE CARD */
-
-.live-card {
-  background:
-    linear-gradient(
-      145deg,
-      #10251a,
-      #10171d
-    );
-
-  border:
-    1px solid
-    rgba(0, 210, 106, .35);
-
-  border-radius: 24px;
-  padding: 20px;
-
-  box-shadow:
-    0 10px 30px
-    rgba(0,0,0,.15);
-}
-
-.live-label {
-  width: max-content;
-  margin: auto;
-
-  background:
-    rgba(255,50,50,.12);
-
-  color: #ff5252;
-
-  padding: 6px 12px;
-
-  border-radius: 20px;
-
-  font-size: 12px;
-
-  font-weight: bold;
-}
-
-.league {
-  text-align: center;
-  color: #7d8b97;
-  font-size: 12px;
-  margin-top: 14px;
-}
-
-.teams {
-  display: grid;
-
-  grid-template-columns:
-    1fr auto 1fr;
-
-  align-items: center;
-
-  gap: 12px;
-
-  margin-top: 18px;
-}
-
-.team {
-  text-align: center;
-}
-
-.team-logo {
-  width: 58px;
-  height: 58px;
-
-  border-radius: 50%;
-
-  background: #1c2730;
-
-  display: flex;
-
-  align-items: center;
-
-  justify-content: center;
-
-  margin: auto;
-
-  font-size: 28px;
-}
-
-.team-name {
-  font-size: 14px;
-  font-weight: bold;
-  margin-top: 8px;
-}
-
-.score {
-  font-size: 30px;
-  font-weight: bold;
-  direction: ltr;
-}
-
-.minute {
-  text-align: center;
-
-  color: #00d26a;
-
-  font-weight: bold;
-
-  font-size: 13px;
-
-  margin-top: 5px;
-}
-
-/* DETAILS BUTTON */
-
-.details-btn {
-  width: 100%;
-
-  border: none;
-
-  background: #00d26a;
-
-  color: #06100b;
-
-  font-weight: bold;
-
-  padding: 14px;
-
-  border-radius: 14px;
-
-  margin-top: 20px;
-
-  cursor: pointer;
-
-  font-size: 14px;
-
-  transition: .2s;
-}
-
-.details-btn:hover {
-  transform: translateY(-2px);
-}
-
-/* MATCHES */
-
-.match {
-  background: #121a22;
-
-  border-radius: 18px;
-
-  padding: 16px;
-
-  margin-bottom: 10px;
-}
-
-.match-top {
-  display: flex;
-
-  justify-content: space-between;
-
-  font-size: 11px;
-
-  color: #7d8b97;
-}
-
-.status {
-  color: #00d26a;
-}
-
-.match-teams {
-  display: grid;
-
-  grid-template-columns:
-    1fr auto 1fr;
-
-  align-items: center;
-
-  text-align: center;
-
-  margin-top: 14px;
-}
-
-.match-score {
-  font-size: 19px;
-
-  font-weight: bold;
-
-  direction: ltr;
-}
-
-.match-time {
-  font-size: 11px;
-
-  color: #7d8b97;
-
-  margin-top: 5px;
-}
-
-/* NEWS */
-
-.news {
-  background: #121a22;
-
-  border-radius: 18px;
-
-  padding: 15px;
-
-  margin-bottom: 10px;
-
-  display: flex;
-
-  gap: 13px;
-
-  cursor: pointer;
-
-  transition: .2s;
-}
-
-.news:hover {
-  transform: translateY(-2px);
-
-  background: #162029;
-}
-
-.news-icon {
-  width: 65px;
-  height: 65px;
-
-  border-radius: 14px;
-
-  background: #1c2730;
-
-  display: flex;
-
-  align-items: center;
-
-  justify-content: center;
-
-  font-size: 28px;
-
-  flex-shrink: 0;
-}
-
-.news-content {
-  flex: 1;
-}
-
-.news-title {
-  font-size: 14px;
-
-  font-weight: bold;
-
-  line-height: 1.6;
-}
-
-.news-description {
-  font-size: 11px;
-
-  color: #7d8b97;
-
-  line-height: 1.7;
-
-  margin-top: 5px;
-}
-
-.news-category {
-  display: inline-block;
-
-  font-size: 10px;
-
-  color: #00d26a;
-
-  background:
-    rgba(0,210,106,.1);
-
-  padding: 4px 7px;
-
-  border-radius: 7px;
-
-  margin-top: 7px;
-}
-
-/* LOADING */
-
-.loading {
-  text-align: center;
-
-  color: #7d8b97;
-
-  padding: 25px;
-}
-
-.loading-spinner {
-  width: 28px;
-  height: 28px;
-
-  border: 3px solid #27333c;
-
-  border-top-color: #00d26a;
-
-  border-radius: 50%;
-
-  margin: 0 auto 10px;
-
-  animation:
-    spin .8s linear infinite;
-}
-
-@keyframes spin {
-
-  to {
-    transform: rotate(360deg);
-  }
-
-}
-
-/* ERROR */
-
-.error {
-  background: #301719;
-
-  color: #ff7777;
-
-  padding: 15px;
-
-  border-radius: 14px;
-
-  font-size: 12px;
-
-  text-align: center;
-}
-
-/* BOTTOM NAV */
-
-.bottom-nav {
-  position: fixed;
-
-  bottom: 0;
-
-  left: 50%;
-
-  transform:
-    translateX(-50%);
-
-  width:
-    min(650px, 100%);
-
-  height: 75px;
-
-  background: #10171d;
-
-  border-top:
-    1px solid #1d2730;
-
-  display: grid;
-
-  grid-template-columns:
-    repeat(4,1fr);
-
-  z-index: 20;
-}
-
-.nav-item {
-  border: none;
-
-  background: transparent;
-
-  color: #7d8b97;
-
-  cursor: pointer;
-
-  font-size: 11px;
-}
-
-.nav-item span {
-  display: block;
-
-  font-size: 22px;
-
-  margin-bottom: 4px;
-}
-
-.nav-item.active {
-  color: #00d26a;
-}
-
-/* MOBILE */
-
-@media(max-width:420px) {
-
-  .brand h1 {
-    font-size: 18px;
-  }
-
-  .score {
-    font-size: 27px;
-  }
-
-  .team-name {
-    font-size: 12px;
-  }
-
-}
-
-</style>
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>football_live | نتایج زنده فوتبال</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, Tahoma, sans-serif;
+    }
+
+    body {
+      background: #080d12;
+      color: #fff;
+      min-height: 100vh;
+    }
+
+    .app {
+      width: 100%;
+      max-width: 700px;
+      margin: auto;
+      padding-bottom: 100px;
+    }
+
+    header {
+      padding: 22px 16px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 25px;
+    }
+
+    header p {
+      color: #7d8b97;
+      font-size: 12px;
+      margin-top: 6px;
+    }
+
+    .top-info {
+      margin: 5px 15px 20px;
+      padding: 16px;
+      border-radius: 18px;
+      background: linear-gradient(145deg, #10251a, #10171d);
+      border: 1px solid rgba(0, 210, 106, .25);
+      text-align: center;
+    }
+
+    .top-info strong {
+      color: #00d26a;
+    }
+
+    .section {
+      margin: 0 15px 22px;
+    }
+
+    .section-title {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 12px;
+    }
+
+    .matches {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .match-card {
+      width: 100%;
+      border: 1px solid #1d2730;
+      border-radius: 18px;
+      padding: 15px;
+      background: #121a22;
+      color: white;
+      text-align: right;
+      cursor: pointer;
+      transition: .2s;
+    }
+
+    .match-card:hover {
+      transform: translateY(-2px);
+      border-color: #00d26a;
+      background: #16221d;
+    }
+
+    .match-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .league {
+      color: #7d8b97;
+      font-size: 11px;
+    }
+
+    .status {
+      padding: 5px 9px;
+      border-radius: 12px;
+      font-size: 10px;
+      font-weight: bold;
+    }
+
+    .live {
+      color: #ff5252;
+      background: rgba(255, 50, 50, .12);
+    }
+
+    .finished {
+      color: #8c99a3;
+      background: #1c2730;
+    }
+
+    .upcoming {
+      color: #00d26a;
+      background: rgba(0, 210, 106, .12);
+    }
+
+    .postponed {
+      color: #ffb347;
+      background: rgba(255, 179, 71, .12);
+    }
+
+    .teams {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .team {
+      text-align: center;
+    }
+
+    .logo {
+      width: 50px;
+      height: 50px;
+      margin: auto;
+      border-radius: 50%;
+      background: #1b252d;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .logo img {
+      width: 43px;
+      height: 43px;
+      object-fit: contain;
+    }
+
+    .team-name {
+      margin-top: 8px;
+      font-size: 12px;
+      font-weight: bold;
+      line-height: 1.4;
+    }
+
+    .score {
+      direction: ltr;
+      font-size: 23px;
+      font-weight: bold;
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    .time {
+      color: #00d26a;
+      font-size: 11px;
+      text-align: center;
+      margin-top: 5px;
+    }
+
+    .empty {
+      text-align: center;
+      color: #7d8b97;
+      padding: 35px 15px;
+      background: #121a22;
+      border-radius: 16px;
+    }
+
+    .loading {
+      text-align: center;
+      color: #7d8b97;
+      padding: 50px 20px;
+    }
+
+    .spinner {
+      width: 32px;
+      height: 32px;
+      margin: 0 auto 12px;
+      border: 3px solid #27333c;
+      border-top-color: #00d26a;
+      border-radius: 50%;
+      animation: spin .8s linear infinite;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .error {
+      margin: 20px 15px;
+      padding: 20px;
+      border-radius: 16px;
+      background: #301719;
+      color: #ff7777;
+      text-align: center;
+      line-height: 1.8;
+      font-size: 13px;
+    }
+
+    .retry {
+      margin-top: 12px;
+      padding: 9px 16px;
+      border: 0;
+      border-radius: 10px;
+      background: #ff5252;
+      color: white;
+      cursor: pointer;
+    }
+
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(700px, 100%);
+      height: 75px;
+      background: #10171d;
+      border-top: 1px solid #1d2730;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      z-index: 100;
+    }
+
+    .nav-item {
+      border: 0;
+      background: transparent;
+      color: #7d8b97;
+      font-size: 11px;
+      cursor: pointer;
+    }
+
+    .nav-item span {
+      display: block;
+      font-size: 22px;
+      margin-bottom: 4px;
+    }
+
+    .nav-item.active {
+      color: #00d26a;
+    }
+
+    @media (max-width: 430px) {
+      header h1 {
+        font-size: 21px;
+      }
+
+      .team-name {
+        font-size: 11px;
+      }
+
+      .score {
+        font-size: 20px;
+      }
+
+      .logo {
+        width: 45px;
+        height: 45px;
+      }
+
+      .logo img {
+        width: 38px;
+        height: 38px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
 <div class="app">
 
-<!-- HEADER -->
+  <header>
+    <h1>⚽ football_live</h1>
+    <p>نتایج زنده و لحظه‌ای فوتبال</p>
+  </header>
 
-<header>
-
-  <div class="brand">
-
-    <div class="logo">
-      ⚽
-    </div>
-
-    <div>
-
-      <h1>
-        football_live
-      </h1>
-
-      <p>
-        نتایج زنده فوتبال
-      </p>
-
-    </div>
-
+  <div class="top-info">
+    امروز <strong id="matchCount">0</strong> بازی در اطلاعات موجود است
   </div>
 
-  <div
-    class="notification"
-    onclick="showNotification()">
+  <section class="section">
 
-    🔔
-
-  </div>
-
-</header>
-
-
-<!-- LIVE MATCH -->
-
-<section class="section">
-
-  <div class="section-title">
-    🔴 بازی‌های زنده
-  </div>
-
-  <div class="live-card">
-
-    <div class="live-label">
-      🔴 LIVE
+    <div class="section-title">
+      🔴 بازی‌های زنده
     </div>
 
-    <div class="league">
-      لیگ برتر ایران
-    </div>
+    <div id="liveMatches" class="matches">
 
-    <div class="teams">
-
-      <div class="team">
-
-        <div class="team-logo">
-          🛡️
-        </div>
-
-        <div class="team-name">
-          پرسپولیس
-        </div>
-
-      </div>
-
-      <div>
-
-        <div class="score">
-          2 - 1
-        </div>
-
-        <div class="minute">
-          66'
-        </div>
-
-      </div>
-
-      <div class="team">
-
-        <div class="team-logo">
-          🛡️
-        </div>
-
-        <div class="team-name">
-          استقلال
-        </div>
-
+      <div class="loading">
+        <div class="spinner"></div>
+        در حال دریافت بازی‌ها...
       </div>
 
     </div>
 
-    <button
-      class="details-btn"
-      onclick="
-        window.location.href='match.html'
-      ">
+  </section>
 
-      مشاهده جزئیات بازی
+  <section class="section">
 
-    </button>
-
-  </div>
-
-</section>
-
-
-<!-- TODAY MATCHES -->
-
-<section class="section">
-
-  <div class="section-title">
-    📅 بازی‌های امروز
-  </div>
-
-  <div class="match">
-
-    <div class="match-top">
-
-      <span>
-        لیگ برتر ایران
-      </span>
-
-      <span class="status">
-        LIVE
-      </span>
-
+    <div class="section-title">
+      📅 سایر بازی‌ها
     </div>
 
-    <div class="match-teams">
+    <div id="otherMatches" class="matches"></div>
 
-      <div>
-        پرسپولیس
-      </div>
-
-      <div>
-
-        <div class="match-score">
-          2 - 1
-        </div>
-
-        <div class="match-time">
-          20:00
-        </div>
-
-      </div>
-
-      <div>
-        استقلال
-      </div>
-
-    </div>
-
-  </div>
-
-
-  <div class="match">
-
-    <div class="match-top">
-
-      <span>
-        Premier League
-      </span>
-
-      <span>
-        آینده
-      </span>
-
-    </div>
-
-    <div class="match-teams">
-
-      <div>
-        Arsenal
-      </div>
-
-      <div>
-
-        <div class="match-score">
-          -
-        </div>
-
-        <div class="match-time">
-          22:30
-        </div>
-
-      </div>
-
-      <div>
-        Chelsea
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- NEWS -->
-
-<section class="section">
-
-  <div class="section-title">
-    📰 آخرین اخبار
-  </div>
-
-  <div id="newsContainer">
-
-    <div class="loading">
-
-      <div class="loading-spinner"></div>
-
-      در حال دریافت اخبار...
-
-    </div>
-
-  </div>
-
-</section>
+  </section>
 
 </div>
 
 
-<!-- BOTTOM NAV -->
-
 <nav class="bottom-nav">
 
-  <button
-    class="nav-item active">
-
-    <span>
-      🏠
-    </span>
-
+  <button class="nav-item active">
+    <span>🏠</span>
     خانه
-
   </button>
 
-  <button
-    class="nav-item"
-    onclick="
-      window.location.href='match.html'
-    ">
-
-    <span>
-      ⚽
-    </span>
-
+  <button class="nav-item" onclick="scrollToLive()">
+    <span>⚽</span>
     زنده
-
   </button>
 
-  <button
-    class="nav-item"
-    onclick="showMatches()">
-
-    <span>
-      📅
-    </span>
-
+  <button class="nav-item" onclick="scrollToOther()">
+    <span>📅</span>
     بازی‌ها
-
   </button>
 
-  <button
-    class="nav-item"
-    onclick="scrollToNews()">
-
-    <span>
-      📰
-    </span>
-
+  <button class="nav-item">
+    <span>📰</span>
     اخبار
-
   </button>
 
 </nav>
@@ -781,353 +360,391 @@ header {
 
 <script>
 
-/* =========================
-   LOAD NEWS FROM API
-========================= */
+const API_URL = "./api/matches.json";
 
-async function loadNews() {
 
-  const container =
-    document.getElementById(
-      "newsContainer"
-    );
+function escapeHTML(value) {
+
+  if (value === undefined || value === null) {
+    return "";
+  }
+
+  const div = document.createElement("div");
+
+  div.textContent = String(value);
+
+  return div.innerHTML;
+}
+
+
+function getStatus(status) {
+
+  switch (status) {
+
+    case "IN_PLAY":
+      return {
+        text: "🔴 LIVE",
+        className: "live"
+      };
+
+    case "PAUSED":
+      return {
+        text: "⏸ نیمه",
+        className: "live"
+      };
+
+    case "FINISHED":
+      return {
+        text: "پایان",
+        className: "finished"
+      };
+
+    case "TIMED":
+      return {
+        text: "بازی آینده",
+        className: "upcoming"
+      };
+
+    case "SCHEDULED":
+      return {
+        text: "برنامه‌ریزی شده",
+        className: "upcoming"
+      };
+
+    case "POSTPONED":
+      return {
+        text: "به تعویق افتاده",
+        className: "postponed"
+      };
+
+    case "CANCELLED":
+      return {
+        text: "لغو شده",
+        className: "postponed"
+      };
+
+    default:
+      return {
+        text: status || "نامشخص",
+        className: "finished"
+      };
+  }
+
+}
+
+
+function createLogo(url) {
+
+  if (!url) {
+    return "⚽";
+  }
+
+  return `
+    <img
+      src="${escapeHTML(url)}"
+      alt="لوگو"
+      onerror="this.style.display='none'; this.parentElement.innerHTML='⚽';"
+    >
+  `;
+}
+
+
+function createMatchCard(match) {
+
+  const status = getStatus(match.status);
+
+  const homeScore =
+    match.homeScore === null ||
+    match.homeScore === undefined
+      ? "-"
+      : match.homeScore;
+
+  const awayScore =
+    match.awayScore === null ||
+    match.awayScore === undefined
+      ? "-"
+      : match.awayScore;
+
+
+  let timeText = "";
+
+  if (
+    match.status === "IN_PLAY" ||
+    match.status === "PAUSED"
+  ) {
+
+    timeText =
+      match.minute !== null &&
+      match.minute !== undefined
+        ? `${escapeHTML(match.minute)}'`
+        : "زنده";
+
+  } else {
+
+    timeText =
+      escapeHTML(match.time || "-");
+
+  }
+
+
+  return `
+
+    <div
+      class="match-card"
+      onclick="openMatch('${escapeHTML(match.id)}')"
+    >
+
+      <div class="match-top">
+
+        <div class="league">
+          ${escapeHTML(match.league || "لیگ نامشخص")}
+        </div>
+
+        <div class="status ${status.className}">
+          ${status.text}
+        </div>
+
+      </div>
+
+
+      <div class="teams">
+
+        <div class="team">
+
+          <div class="logo">
+            ${createLogo(match.homeLogo)}
+          </div>
+
+          <div class="team-name">
+            ${escapeHTML(match.homeTeam)}
+          </div>
+
+        </div>
+
+
+        <div>
+
+          <div class="score">
+            ${escapeHTML(homeScore)}
+            -
+            ${escapeHTML(awayScore)}
+          </div>
+
+          <div class="time">
+            ${timeText}
+          </div>
+
+        </div>
+
+
+        <div class="team">
+
+          <div class="logo">
+            ${createLogo(match.awayLogo)}
+          </div>
+
+          <div class="team-name">
+            ${escapeHTML(match.awayTeam)}
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  `;
+
+}
+
+
+function openMatch(id) {
+
+  if (!id) {
+    return;
+  }
+
+  window.location.href =
+    "match.html?id=" +
+    encodeURIComponent(id);
+
+}
+
+
+async function loadMatches() {
+
+  const liveContainer =
+    document.getElementById("liveMatches");
+
+  const otherContainer =
+    document.getElementById("otherMatches");
 
   try {
 
     const response =
       await fetch(
-        "https://football-live-api-7fse.onrender.com/api/news"
+        API_URL + "?t=" + Date.now()
       );
 
     if (!response.ok) {
 
       throw new Error(
-        "API response error"
+        "matches.json پیدا نشد"
       );
 
     }
+
 
     const data =
       await response.json();
 
+
     if (
-      !data.success ||
-      !Array.isArray(data.news)
+      !data ||
+      !Array.isArray(data.matches)
     ) {
 
       throw new Error(
-        "ساختار API صحیح نیست"
+        "ساختار matches.json صحیح نیست"
       );
 
     }
 
-    container.innerHTML = "";
 
-    if (
-      data.news.length === 0
-    ) {
+    const matches =
+      data.matches;
 
-      container.innerHTML = `
 
-        <div class="loading">
+    document.getElementById("matchCount")
+      .textContent = matches.length;
 
-          خبری موجود نیست.
 
+    const liveMatches =
+      matches.filter(match =>
+        match.status === "IN_PLAY" ||
+        match.status === "PAUSED"
+      );
+
+
+    const otherMatches =
+      matches.filter(match =>
+        match.status !== "IN_PLAY" &&
+        match.status !== "PAUSED"
+      );
+
+
+    if (liveMatches.length > 0) {
+
+      liveContainer.innerHTML =
+        liveMatches
+          .map(createMatchCard)
+          .join("");
+
+    } else {
+
+      liveContainer.innerHTML = `
+
+        <div class="empty">
+          در حال حاضر بازی زنده‌ای وجود ندارد.
         </div>
 
       `;
 
-      return;
+    }
+
+
+    if (otherMatches.length > 0) {
+
+      otherContainer.innerHTML =
+        otherMatches
+          .map(createMatchCard)
+          .join("");
+
+    } else {
+
+      otherContainer.innerHTML = `
+
+        <div class="empty">
+          بازی دیگری پیدا نشد.
+        </div>
+
+      `;
 
     }
 
-    data.news.forEach(
-      news => {
 
-        const item =
-          document.createElement(
-            "div"
-          );
+  } catch (error) {
 
-        item.className =
-          "news";
+    console.error(error);
 
-        item.innerHTML = `
 
-          <div class="news-icon">
-            📰
-          </div>
-
-          <div class="news-content">
-
-            <div class="news-title">
-              ${escapeHTML(news.title)}
-            </div>
-
-            <div class="news-description">
-              ${escapeHTML(news.description)}
-            </div>
-
-            <div class="news-category">
-              ${escapeHTML(news.category)}
-            </div>
-
-          </div>
-
-        `;
-
-        container.appendChild(
-          item
-        );
-
-      }
-    );
-
-  }
-
-  catch(error) {
-
-    console.error(
-      "News Error:",
-      error
-    );
-
-    container.innerHTML = `
+    liveContainer.innerHTML = `
 
       <div class="error">
 
-        ❌ دریافت اخبار با مشکل مواجه شد.
+        ❌ دریافت بازی‌ها با مشکل مواجه شد.
 
-        <br><br>
+        <br>
 
-        اتصال به API برقرار نشد.
+        ${escapeHTML(error.message)}
+
+        <br>
+
+        <button
+          class="retry"
+          onclick="loadMatches()"
+        >
+          تلاش دوباره
+        </button>
 
       </div>
 
     `;
 
-  }
 
-}
-
-
-/* =========================
-   SECURITY
-========================= */
-
-function escapeHTML(value) {
-
-  if (
-    value === undefined ||
-    value === null
-  ) {
-
-    return "";
+    otherContainer.innerHTML = "";
 
   }
 
-  const div =
-    document.createElement(
-      "div"
-    );
-
-  div.textContent =
-    String(value);
-
-  return div.innerHTML;
-
 }
 
 
-/* =========================
-   NOTIFICATION
-========================= */
+function scrollToLive() {
 
-function showNotification() {
-
-  alert(
-    "🔔 اعلان‌های football_live به‌زودی فعال می‌شوند."
-  );
-
-}
-
-
-/* =========================
-   NEWS BUTTON
-========================= */
-
-function scrollToNews() {
-
-  const news =
-    document.getElementById(
-      "newsContainer"
-    );
-
-  if (news) {
-
-    news.scrollIntoView({
+  document
+    .getElementById("liveMatches")
+    .scrollIntoView({
       behavior: "smooth"
     });
 
-  }
-
 }
 
 
-/* =========================
-   MATCHES BUTTON
-========================= */
+function scrollToOther() {
 
-function showMatches() {
+  document
+    .getElementById("otherMatches")
+    .scrollIntoView({
+      behavior: "smooth"
+    });
 
-  window.scrollTo({
-    top: 430,
-    behavior: "smooth"
-  });
-
-}
-
-
-/* =========================
-   START
-========================= */
-
-loadNews();
-
-</script>
-<script>
-async function loadMatches() {
-    try {
-        const response = await fetch("./api/matches.json");
-
-        if (!response.ok) {
-            throw new Error("API Error");
-        }
-
-        const data = await response.json();
-
-        console.log("Matches loaded:", data);
-
-        if (!data.success || !data.matches) {
-            throw new Error("ساختار API اشتباه است");
-        }
-
-        // پیدا کردن لیست بازی‌ها
-        const container =
-            document.querySelector("#matches") ||
-            document.querySelector(".matches") ||
-            document.querySelector(".match-list");
-
-        if (!container) {
-            console.warn("محل نمایش بازی‌ها پیدا نشد.");
-            return;
-        }
-
-        container.innerHTML = "";
-
-        data.matches.forEach(match => {
-
-            const homeScore =
-                match.homeScore ?? "-";
-
-            const awayScore =
-                match.awayScore ?? "-";
-
-            const status =
-                match.status === "IN_PLAY"
-                    ? "🔴 زنده"
-                    : match.status === "FINISHED"
-                    ? "پایان یافته"
-                    : "⏰ به‌زودی";
-
-            const card = document.createElement("div");
-
-            card.innerHTML = `
-                <div style="
-                    background:#121a22;
-                    border-radius:18px;
-                    padding:16px;
-                    margin-bottom:10px;
-                    cursor:pointer;
-                "
-                onclick="openMatch(${match.id})">
-
-                    <div style="
-                        text-align:center;
-                        color:#7d8b97;
-                        font-size:12px;
-                        margin-bottom:12px;
-                    ">
-                        ${match.league || ""}
-                    </div>
-
-                    <div style="
-                        display:flex;
-                        align-items:center;
-                        justify-content:space-between;
-                        gap:10px;
-                    ">
-
-                        <div style="text-align:center;flex:1">
-                            <img
-                                src="${match.homeLogo || ""}"
-                                style="width:45px;height:45px;object-fit:contain"
-                            >
-                            <div>${match.homeTeam}</div>
-                        </div>
-
-                        <div style="
-                            text-align:center;
-                            font-size:22px;
-                            font-weight:bold;
-                        ">
-                            ${homeScore} - ${awayScore}
-
-                            <div style="
-                                font-size:11px;
-                                color:#00d26a;
-                                margin-top:5px;
-                            ">
-                                ${status}
-                            </div>
-                        </div>
-
-                        <div style="text-align:center;flex:1">
-                            <img
-                                src="${match.awayLogo || ""}"
-                                style="width:45px;height:45px;object-fit:contain"
-                            >
-                            <div>${match.awayTeam}</div>
-                        </div>
-
-                    </div>
-
-                </div>
-            `;
-
-            container.appendChild(card);
-        });
-
-    } catch (error) {
-
-        console.error(error);
-
-        console.log(
-            "دریافت بازی‌ها از api/matches.json ناموفق بود."
-        );
-    }
-}
-
-
-function openMatch(id) {
-    window.location.href =
-        "match.html?id=" + id;
 }
 
 
 loadMatches();
 
-</script>
-</body>
 
+/*
+  هر 30 ثانیه اطلاعات بازی‌ها دوباره دریافت می‌شود
+*/
+
+setInterval(
+  loadMatches,
+  30000
+);
+
+</script>
+
+</body>
 </html>
+```
