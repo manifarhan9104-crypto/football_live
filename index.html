@@ -1,577 +1,712 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>football_live</title>
+<meta charset="UTF-8">
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-    }
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
-    body {
-      background: #080d12;
-      color: white;
-      min-height: 100vh;
-    }
+<title>football_live</title>
 
-    .app {
-      max-width: 600px;
-      margin: auto;
-      padding-bottom: 90px;
-    }
+<style>
 
-    header {
-      padding: 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
+*{
+box-sizing:border-box;
+margin:0;
+padding:0;
+font-family:Arial,sans-serif;
+}
 
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
+body{
+background:#080d12;
+color:white;
+min-height:100vh;
+}
 
-    .logo {
-      width: 48px;
-      height: 48px;
-      border-radius: 15px;
-      background: #00d26a;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #06100b;
-      font-size: 25px;
-    }
+.app{
+max-width:650px;
+margin:auto;
+padding-bottom:90px;
+}
 
-    .brand h1 {
-      font-size: 20px;
-    }
+header{
+padding:18px 16px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+}
 
-    .brand p {
-      color: #75818d;
-      font-size: 12px;
-      margin-top: 4px;
-    }
+.brand{
+display:flex;
+align-items:center;
+gap:12px;
+}
 
-    .notification {
-      width: 42px;
-      height: 42px;
-      border-radius: 13px;
-      background: #121a22;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 20px;
-      cursor: pointer;
-    }
+.logo{
+width:48px;
+height:48px;
+border-radius:15px;
+background:#00d26a;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:25px;
+}
 
-    .section {
-      padding: 0 16px;
-      margin-top: 10px;
-    }
+.brand h1{
+font-size:20px;
+}
 
-    .section-title {
-      font-size: 18px;
-      font-weight: bold;
-      margin-bottom: 12px;
-    }
+.brand p{
+font-size:11px;
+color:#7d8b97;
+margin-top:4px;
+}
 
-    .live-card {
-      background: linear-gradient(145deg, #10251a, #10171d);
-      border: 1px solid rgba(0, 210, 106, 0.35);
-      border-radius: 24px;
-      padding: 20px;
-    }
+.notification{
+width:42px;
+height:42px;
+border-radius:13px;
+background:#121a22;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:20px;
+}
 
-    .live-label {
-      width: fit-content;
-      margin: auto;
-      background: rgba(255, 50, 50, 0.12);
-      color: #ff5252;
-      padding: 6px 12px;
-      border-radius: 20px;
-      font-size: 12px;
-      font-weight: bold;
-    }
+.section{
+padding:0 16px;
+margin-top:10px;
+}
 
-    .league {
-      color: #75818d;
-      font-size: 12px;
-      text-align: center;
-      margin-top: 15px;
-    }
+.section-title{
+font-size:18px;
+font-weight:bold;
+margin-bottom:13px;
+}
 
-    .teams {
-      display: grid;
-      grid-template-columns: 1fr auto 1fr;
-      align-items: center;
-      gap: 15px;
-      margin-top: 18px;
-    }
+.live-card{
+background:linear-gradient(145deg,#10251a,#10171d);
+border:1px solid rgba(0,210,106,.35);
+border-radius:24px;
+padding:20px;
+}
 
-    .team {
-      text-align: center;
-    }
+.live-label{
+width:max-content;
+margin:auto;
+background:rgba(255,50,50,.12);
+color:#ff5252;
+padding:6px 12px;
+border-radius:20px;
+font-size:12px;
+font-weight:bold;
+}
 
-    .team-logo {
-      width: 55px;
-      height: 55px;
-      margin: auto;
-      border-radius: 50%;
-      background: #1c2730;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 27px;
-    }
+.league{
+text-align:center;
+color:#7d8b97;
+font-size:12px;
+margin-top:14px;
+}
 
-    .team-name {
-      margin-top: 8px;
-      font-weight: bold;
-      font-size: 14px;
-    }
+.teams{
+display:grid;
+grid-template-columns:1fr auto 1fr;
+align-items:center;
+gap:12px;
+margin-top:18px;
+}
 
-    .score {
-      font-size: 30px;
-      font-weight: bold;
-      direction: ltr;
-    }
+.team{
+text-align:center;
+}
 
-    .minute {
-      color: #00d26a;
-      text-align: center;
-      font-size: 13px;
-      margin-top: 5px;
-      font-weight: bold;
-    }
+.team-logo{
+width:58px;
+height:58px;
+border-radius:50%;
+background:#1c2730;
+display:flex;
+align-items:center;
+justify-content:center;
+margin:auto;
+font-size:28px;
+}
 
-    .details-btn {
-      width: 100%;
-      border: none;
-      background: #00d26a;
-      color: #06100b;
-      font-weight: bold;
-      padding: 14px;
-      border-radius: 14px;
-      margin-top: 20px;
-      cursor: pointer;
-      font-size: 14px;
-    }
+.team-name{
+font-size:14px;
+font-weight:bold;
+margin-top:8px;
+}
 
-    .match {
-      background: #121a22;
-      border-radius: 18px;
-      padding: 16px;
-      margin-bottom: 10px;
-    }
+.score{
+font-size:30px;
+font-weight:bold;
+direction:ltr;
+}
 
-    .match-top {
-      display: flex;
-      justify-content: space-between;
-      color: #75818d;
-      font-size: 11px;
-    }
+.minute{
+text-align:center;
+color:#00d26a;
+font-weight:bold;
+font-size:13px;
+margin-top:5px;
+}
 
-    .match-status {
-      color: #00d26a;
-    }
+.details-btn{
+width:100%;
+border:none;
+background:#00d26a;
+color:#06100b;
+font-weight:bold;
+padding:14px;
+border-radius:14px;
+margin-top:20px;
+cursor:pointer;
+font-size:14px;
+}
 
-    .match-teams {
-      display: grid;
-      grid-template-columns: 1fr auto 1fr;
-      align-items: center;
-      text-align: center;
-      margin-top: 14px;
-    }
+.match{
+background:#121a22;
+border-radius:18px;
+padding:16px;
+margin-bottom:10px;
+}
 
-    .match-score {
-      font-size: 19px;
-      font-weight: bold;
-      direction: ltr;
-    }
+.match-top{
+display:flex;
+justify-content:space-between;
+font-size:11px;
+color:#7d8b97;
+}
 
-    .match-time {
-      color: #75818d;
-      font-size: 11px;
-      margin-top: 5px;
-    }
+.status{
+color:#00d26a;
+}
 
-    .news {
-      display: flex;
-      gap: 13px;
-      background: #121a22;
-      border-radius: 18px;
-      padding: 15px;
-      margin-bottom: 10px;
-      cursor: pointer;
-    }
+.match-teams{
+display:grid;
+grid-template-columns:1fr auto 1fr;
+align-items:center;
+text-align:center;
+margin-top:14px;
+}
 
-    .news-image {
-      width: 65px;
-      height: 65px;
-      flex-shrink: 0;
-      border-radius: 14px;
-      background: #1c2730;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 28px;
-    }
+.match-score{
+font-size:19px;
+font-weight:bold;
+direction:ltr;
+}
 
-    .news h3 {
-      font-size: 14px;
-      margin-bottom: 8px;
-    }
+.match-time{
+font-size:11px;
+color:#7d8b97;
+margin-top:5px;
+}
 
-    .news p {
-      color: #75818d;
-      font-size: 11px;
-      line-height: 1.7;
-    }
+.news{
+background:#121a22;
+border-radius:18px;
+padding:15px;
+margin-bottom:10px;
+display:flex;
+gap:13px;
+cursor:pointer;
+}
 
-    .bottom-nav {
-      position: fixed;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: min(600px, 100%);
-      height: 75px;
-      background: #10171d;
-      border-top: 1px solid #1d2730;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      z-index: 10;
-    }
+.news-icon{
+width:65px;
+height:65px;
+border-radius:14px;
+background:#1c2730;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:28px;
+flex-shrink:0;
+}
 
-    .nav-item {
-      border: none;
-      background: transparent;
-      color: #75818d;
-      cursor: pointer;
-      font-size: 11px;
-    }
+.news-content{
+flex:1;
+}
 
-    .nav-item span {
-      display: block;
-      font-size: 22px;
-      margin-bottom: 4px;
-    }
+.news-title{
+font-size:14px;
+font-weight:bold;
+line-height:1.6;
+}
 
-    .nav-item.active {
-      color: #00d26a;
-    }
+.news-description{
+font-size:11px;
+color:#7d8b97;
+line-height:1.7;
+margin-top:5px;
+}
 
-    @media (min-width: 601px) {
-      body {
-        background: #020507;
-      }
+.news-category{
+font-size:10px;
+color:#00d26a;
+margin-top:7px;
+}
 
-      .app {
-        background: #080d12;
-        min-height: 100vh;
-      }
-    }
-  </style>
+.loading{
+text-align:center;
+color:#7d8b97;
+padding:20px;
+}
+
+.error{
+background:#301719;
+color:#ff7777;
+padding:15px;
+border-radius:14px;
+font-size:12px;
+}
+
+.bottom-nav{
+position:fixed;
+bottom:0;
+left:50%;
+transform:translateX(-50%);
+width:min(650px,100%);
+height:75px;
+background:#10171d;
+border-top:1px solid #1d2730;
+display:grid;
+grid-template-columns:repeat(4,1fr);
+z-index:20;
+}
+
+.nav-item{
+border:none;
+background:transparent;
+color:#7d8b97;
+cursor:pointer;
+font-size:11px;
+}
+
+.nav-item span{
+display:block;
+font-size:22px;
+margin-bottom:4px;
+}
+
+.nav-item.active{
+color:#00d26a;
+}
+
+</style>
+
 </head>
 
 <body>
 
+
 <div class="app">
 
-  <header>
-    <div class="brand">
 
-      <div class="logo">
-        ⚽
-      </div>
+<header>
 
-      <div>
-        <h1>football_live</h1>
-        <p>نتایج زنده فوتبال</p>
-      </div>
+<div class="brand">
 
-    </div>
+<div class="logo">
+⚽
+</div>
 
-    <div class="notification">
-      🔔
-    </div>
-  </header>
+<div>
 
+<h1>
+football_live
+</h1>
 
-  <section class="section">
+<p>
+نتایج زنده فوتبال
+</p>
 
-    <div class="section-title">
-      🔴 بازی‌های زنده
-    </div>
-
-    <div class="live-card">
-
-      <div class="live-label">
-        🔴 LIVE
-      </div>
-
-      <div class="league">
-        لیگ برتر ایران
-      </div>
-
-      <div class="teams">
-
-        <div class="team">
-
-          <div class="team-logo">
-            🛡️
-          </div>
-
-          <div class="team-name">
-            پرسپولیس
-          </div>
-
-        </div>
-
-
-        <div>
-
-          <div class="score">
-            2 - 1
-          </div>
-
-          <div class="minute">
-            66'
-          </div>
-
-        </div>
-
-
-        <div class="team">
-
-          <div class="team-logo">
-            🛡️
-          </div>
-
-          <div class="team-name">
-            استقلال
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <button
-        class="details-btn"
-        onclick="window.location.href='match.html'">
-
-        مشاهده جزئیات بازی
-
-      </button>
-
-    </div>
-
-  </section>
-
-
-  <section class="section">
-
-    <div class="section-title">
-      📅 بازی‌های امروز
-    </div>
-
-
-    <div class="match">
-
-      <div class="match-top">
-
-        <span>
-          لیگ برتر ایران
-        </span>
-
-        <span class="match-status">
-          LIVE
-        </span>
-
-      </div>
-
-
-      <div class="match-teams">
-
-        <div>
-          پرسپولیس
-        </div>
-
-        <div>
-
-          <div class="match-score">
-            2 - 1
-          </div>
-
-          <div class="match-time">
-            20:00
-          </div>
-
-        </div>
-
-        <div>
-          استقلال
-        </div>
-
-      </div>
-
-    </div>
-
-
-    <div class="match">
-
-      <div class="match-top">
-
-        <span>
-          Premier League
-        </span>
-
-        <span class="match-status">
-          آینده
-        </span>
-
-      </div>
-
-
-      <div class="match-teams">
-
-        <div>
-          Arsenal
-        </div>
-
-        <div>
-
-          <div class="match-score">
-            -
-          </div>
-
-          <div class="match-time">
-            22:30
-          </div>
-
-        </div>
-
-        <div>
-          Chelsea
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <section class="section">
-
-    <div class="section-title">
-      📰 آخرین اخبار
-    </div>
-
-
-    <div class="news">
-
-      <div class="news-image">
-        ⚽
-      </div>
-
-      <div>
-
-        <h3>
-          آخرین اخبار فوتبال ایران و جهان
-        </h3>
-
-        <p>
-          مهم‌ترین اخبار و حواشی فوتبال را در football_live دنبال کنید.
-        </p>
-
-      </div>
-
-    </div>
-
-
-    <div class="news">
-
-      <div class="news-image">
-        🔥
-      </div>
-
-      <div>
-
-        <h3>
-          نقل‌وانتقالات داغ فوتبال
-        </h3>
-
-        <p>
-          جدیدترین اخبار نقل‌وانتقالات فوتبال جهان.
-        </p>
-
-      </div>
-
-    </div>
-
-  </section>
+</div>
 
 </div>
 
 
+<div class="notification">
+🔔
+</div>
+
+</header>
+
+
+
+<!-- LIVE MATCH -->
+
+<section class="section">
+
+<div class="section-title">
+🔴 بازی‌های زنده
+</div>
+
+
+<div class="live-card">
+
+<div class="live-label">
+🔴 LIVE
+</div>
+
+<div class="league">
+لیگ برتر ایران
+</div>
+
+
+<div class="teams">
+
+
+<div class="team">
+
+<div class="team-logo">
+🛡️
+</div>
+
+<div class="team-name">
+پرسپولیس
+</div>
+
+</div>
+
+
+<div>
+
+<div class="score">
+2 - 1
+</div>
+
+<div class="minute">
+66'
+</div>
+
+</div>
+
+
+<div class="team">
+
+<div class="team-logo">
+🛡️
+</div>
+
+<div class="team-name">
+استقلال
+</div>
+
+</div>
+
+
+</div>
+
+
+<button
+class="details-btn"
+onclick="window.location.href='match.html'">
+
+مشاهده جزئیات بازی
+
+</button>
+
+
+</div>
+
+</section>
+
+
+
+<!-- TODAY MATCHES -->
+
+<section class="section">
+
+<div class="section-title">
+📅 بازی‌های امروز
+</div>
+
+
+<div class="match">
+
+<div class="match-top">
+
+<span>
+لیگ برتر ایران
+</span>
+
+<span class="status">
+LIVE
+</span>
+
+</div>
+
+
+<div class="match-teams">
+
+<div>
+پرسپولیس
+</div>
+
+<div>
+
+<div class="match-score">
+2 - 1
+</div>
+
+<div class="match-time">
+20:00
+</div>
+
+</div>
+
+<div>
+استقلال
+</div>
+
+</div>
+
+</div>
+
+
+
+<div class="match">
+
+<div class="match-top">
+
+<span>
+Premier League
+</span>
+
+<span>
+آینده
+</span>
+
+</div>
+
+
+<div class="match-teams">
+
+<div>
+Arsenal
+</div>
+
+<div>
+
+<div class="match-score">
+-
+</div>
+
+<div class="match-time">
+22:30
+</div>
+
+</div>
+
+<div>
+Chelsea
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- NEWS -->
+
+<section class="section">
+
+<div class="section-title">
+📰 آخرین اخبار
+</div>
+
+
+<div id="newsContainer">
+
+<div class="loading">
+در حال دریافت اخبار...
+</div>
+
+</div>
+
+</section>
+
+
+</div>
+
+
+
+<!-- NAVIGATION -->
+
 <nav class="bottom-nav">
 
-  <button class="nav-item active">
+<button class="nav-item active">
 
-    <span>
-      🏠
-    </span>
+<span>
+🏠
+</span>
 
-    خانه
+خانه
 
-  </button>
-
-
-  <button
-    class="nav-item"
-    onclick="window.location.href='match.html'">
-
-    <span>
-      ⚽
-    </span>
-
-    زنده
-
-  </button>
+</button>
 
 
-  <button class="nav-item">
+<button
+class="nav-item"
+onclick="window.location.href='match.html'">
 
-    <span>
-      📅
-    </span>
+<span>
+⚽
+</span>
 
-    بازی‌ها
+زنده
 
-  </button>
+</button>
 
 
-  <button class="nav-item">
+<button class="nav-item">
 
-    <span>
-      📰
-    </span>
+<span>
+📅
+</span>
 
-    اخبار
+بازی‌ها
 
-  </button>
+</button>
+
+
+<button class="nav-item">
+
+<span>
+📰
+</span>
+
+اخبار
+
+</button>
 
 </nav>
 
+
+
+<script>
+
+
+async function loadNews(){
+
+const container =
+document.getElementById(
+"newsContainer"
+);
+
+try{
+
+const response =
+await fetch(
+"api/news.json"
+);
+
+if(!response.ok){
+
+throw new Error(
+"خطا در دریافت اخبار"
+);
+
+}
+
+
+const data =
+await response.json();
+
+
+container.innerHTML="";
+
+
+if(
+!data.news ||
+data.news.length===0
+){
+
+container.innerHTML=`
+<div class="loading">
+خبری موجود نیست
+</div>
+`;
+
+return;
+
+}
+
+
+data.news.forEach(
+news => {
+
+const item =
+document.createElement(
+"div"
+);
+
+item.className="news";
+
+
+item.innerHTML=`
+
+<div class="news-icon">
+📰
+</div>
+
+<div class="news-content">
+
+<div class="news-title">
+${news.title}
+</div>
+
+<div class="news-description">
+${news.description}
+</div>
+
+<div class="news-category">
+${news.category}
+</div>
+
+</div>
+
+`;
+
+
+container.appendChild(item);
+
+});
+
+
+}catch(error){
+
+container.innerHTML=`
+
+<div class="error">
+
+❌ دریافت اخبار با مشکل مواجه شد.
+
+</div>
+
+`;
+
+console.error(error);
+
+}
+
+}
+
+
+loadNews();
+
+</script>
+
+
 </body>
+
 </html>
