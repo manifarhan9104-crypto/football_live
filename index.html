@@ -70,6 +70,7 @@
       align-items: center;
       justify-content: center;
       font-size: 20px;
+      cursor: pointer;
     }
 
     .section {
@@ -210,6 +211,7 @@
       border-radius: 18px;
       padding: 15px;
       margin-bottom: 10px;
+      cursor: pointer;
     }
 
     .news-image {
@@ -286,12 +288,16 @@
 
   <header>
     <div class="brand">
-      <div class="logo">⚽</div>
+
+      <div class="logo">
+        ⚽
+      </div>
 
       <div>
         <h1>football_live</h1>
         <p>نتایج زنده فوتبال</p>
       </div>
+
     </div>
 
     <div class="notification">
@@ -319,24 +325,52 @@
       <div class="teams">
 
         <div class="team">
-          <div class="team-logo">🛡️</div>
-          <div class="team-name">پرسپولیس</div>
+
+          <div class="team-logo">
+            🛡️
+          </div>
+
+          <div class="team-name">
+            پرسپولیس
+          </div>
+
         </div>
+
 
         <div>
-          <div class="score">2 - 1</div>
-          <div class="minute">66'</div>
+
+          <div class="score">
+            2 - 1
+          </div>
+
+          <div class="minute">
+            66'
+          </div>
+
         </div>
 
+
         <div class="team">
-          <div class="team-logo">🛡️</div>
-          <div class="team-name">استقلال</div>
+
+          <div class="team-logo">
+            🛡️
+          </div>
+
+          <div class="team-name">
+            استقلال
+          </div>
+
         </div>
 
       </div>
 
-      <button class="details-btn" onclick="openMatch()">
+
+      <button
+        class="details-btn"
+        onclick="window.location.href='match.html'">
+
         مشاهده جزئیات بازی
+
       </button>
 
     </div>
@@ -350,23 +384,43 @@
       📅 بازی‌های امروز
     </div>
 
+
     <div class="match">
 
       <div class="match-top">
-        <span>لیگ برتر ایران</span>
-        <span class="match-status">LIVE</span>
+
+        <span>
+          لیگ برتر ایران
+        </span>
+
+        <span class="match-status">
+          LIVE
+        </span>
+
       </div>
+
 
       <div class="match-teams">
 
-        <div>پرسپولیس</div>
-
         <div>
-          <div class="match-score">2 - 1</div>
-          <div class="match-time">20:00</div>
+          پرسپولیس
         </div>
 
-        <div>استقلال</div>
+        <div>
+
+          <div class="match-score">
+            2 - 1
+          </div>
+
+          <div class="match-time">
+            20:00
+          </div>
+
+        </div>
+
+        <div>
+          استقلال
+        </div>
 
       </div>
 
@@ -376,20 +430,39 @@
     <div class="match">
 
       <div class="match-top">
-        <span>Premier League</span>
-        <span class="match-status">آینده</span>
+
+        <span>
+          Premier League
+        </span>
+
+        <span class="match-status">
+          آینده
+        </span>
+
       </div>
+
 
       <div class="match-teams">
 
-        <div>Arsenal</div>
-
         <div>
-          <div class="match-score">-</div>
-          <div class="match-time">22:30</div>
+          Arsenal
         </div>
 
-        <div>Chelsea</div>
+        <div>
+
+          <div class="match-score">
+            -
+          </div>
+
+          <div class="match-time">
+            22:30
+          </div>
+
+        </div>
+
+        <div>
+          Chelsea
+        </div>
 
       </div>
 
@@ -404,6 +477,7 @@
       📰 آخرین اخبار
     </div>
 
+
     <div class="news">
 
       <div class="news-image">
@@ -411,10 +485,15 @@
       </div>
 
       <div>
-        <h3>آخرین اخبار فوتبال ایران و جهان</h3>
+
+        <h3>
+          آخرین اخبار فوتبال ایران و جهان
+        </h3>
+
         <p>
           مهم‌ترین اخبار و حواشی فوتبال را در football_live دنبال کنید.
         </p>
+
       </div>
 
     </div>
@@ -427,10 +506,15 @@
       </div>
 
       <div>
-        <h3>نقل‌وانتقالات داغ فوتبال</h3>
+
+        <h3>
+          نقل‌وانتقالات داغ فوتبال
+        </h3>
+
         <p>
           جدیدترین اخبار نقل‌وانتقالات فوتبال جهان.
         </p>
+
       </div>
 
     </div>
@@ -443,51 +527,51 @@
 <nav class="bottom-nav">
 
   <button class="nav-item active">
-    <span>🏠</span>
+
+    <span>
+      🏠
+    </span>
+
     خانه
+
   </button>
 
-  <button class="nav-item">
-    <span>⚽</span>
+
+  <button
+    class="nav-item"
+    onclick="window.location.href='match.html'">
+
+    <span>
+      ⚽
+    </span>
+
     زنده
+
   </button>
 
+
   <button class="nav-item">
-    <span>📅</span>
+
+    <span>
+      📅
+    </span>
+
     بازی‌ها
+
   </button>
 
+
   <button class="nav-item">
-    <span>📰</span>
+
+    <span>
+      📰
+    </span>
+
     اخبار
+
   </button>
 
 </nav>
-
-
-<script>
-
-function openMatch() {
-  window.location.href = "match.html";
-}
-
-const navItems = document.querySelectorAll(".nav-item");
-
-navItems.forEach(item => {
-
-  item.addEventListener("click", () => {
-
-    navItems.forEach(nav => {
-      nav.classList.remove("active");
-    });
-
-    item.classList.add("active");
-
-  });
-
-});
-
-</script>
 
 </body>
 </html>
