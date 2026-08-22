@@ -12,295 +12,506 @@ content="width=device-width, initial-scale=1.0">
 
 <style>
 
-*{
-box-sizing:border-box;
-margin:0;
-padding:0;
-font-family:Arial,sans-serif;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
 }
 
-body{
-background:#080d12;
-color:white;
-min-height:100vh;
+body {
+  background: #080d12;
+  color: white;
+  min-height: 100vh;
 }
 
-.app{
-max-width:650px;
-margin:auto;
-padding-bottom:90px;
+.app {
+  max-width: 650px;
+  margin: auto;
+  padding-bottom: 95px;
 }
 
-header{
-padding:18px 16px;
-display:flex;
-align-items:center;
-justify-content:space-between;
+/* HEADER */
+
+header {
+  padding: 18px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.brand{
-display:flex;
-align-items:center;
-gap:12px;
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
-.logo{
-width:48px;
-height:48px;
-border-radius:15px;
-background:#00d26a;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:25px;
+.logo {
+  width: 50px;
+  height: 50px;
+  border-radius: 16px;
+  background: #00d26a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 27px;
+  box-shadow: 0 5px 20px rgba(0, 210, 106, .2);
 }
 
-.brand h1{
-font-size:20px;
+.brand h1 {
+  font-size: 21px;
 }
 
-.brand p{
-font-size:11px;
-color:#7d8b97;
-margin-top:4px;
+.brand p {
+  font-size: 11px;
+  color: #7d8b97;
+  margin-top: 4px;
 }
 
-.notification{
-width:42px;
-height:42px;
-border-radius:13px;
-background:#121a22;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:20px;
+.notification {
+  width: 43px;
+  height: 43px;
+  border-radius: 13px;
+  background: #121a22;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  cursor: pointer;
 }
 
-.section{
-padding:0 16px;
-margin-top:10px;
+
+/* SECTION */
+
+.section {
+  padding: 0 16px;
+  margin-top: 12px;
 }
 
-.section-title{
-font-size:18px;
-font-weight:bold;
-margin-bottom:13px;
+.section-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 13px;
 }
 
-.live-card{
-background:linear-gradient(145deg,#10251a,#10171d);
-border:1px solid rgba(0,210,106,.35);
-border-radius:24px;
-padding:20px;
+
+/* LIVE CARD */
+
+.live-card {
+  background:
+    linear-gradient(
+      145deg,
+      #10251a,
+      #10171d
+    );
+
+  border:
+    1px solid
+    rgba(0, 210, 106, .35);
+
+  border-radius: 24px;
+
+  padding: 20px;
+
+  box-shadow:
+    0 10px 30px
+    rgba(0,0,0,.15);
 }
 
-.live-label{
-width:max-content;
-margin:auto;
-background:rgba(255,50,50,.12);
-color:#ff5252;
-padding:6px 12px;
-border-radius:20px;
-font-size:12px;
-font-weight:bold;
+.live-label {
+  width: max-content;
+  margin: auto;
+
+  background:
+    rgba(255,50,50,.12);
+
+  color: #ff5252;
+
+  padding: 6px 12px;
+
+  border-radius: 20px;
+
+  font-size: 12px;
+
+  font-weight: bold;
 }
 
-.league{
-text-align:center;
-color:#7d8b97;
-font-size:12px;
-margin-top:14px;
+.league {
+  text-align: center;
+
+  color: #7d8b97;
+
+  font-size: 12px;
+
+  margin-top: 14px;
 }
 
-.teams{
-display:grid;
-grid-template-columns:1fr auto 1fr;
-align-items:center;
-gap:12px;
-margin-top:18px;
+.teams {
+  display: grid;
+
+  grid-template-columns:
+    1fr auto 1fr;
+
+  align-items: center;
+
+  gap: 12px;
+
+  margin-top: 18px;
 }
 
-.team{
-text-align:center;
+.team {
+  text-align: center;
 }
 
-.team-logo{
-width:58px;
-height:58px;
-border-radius:50%;
-background:#1c2730;
-display:flex;
-align-items:center;
-justify-content:center;
-margin:auto;
-font-size:28px;
+.team-logo {
+  width: 58px;
+  height: 58px;
+
+  border-radius: 50%;
+
+  background: #1c2730;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  margin: auto;
+
+  font-size: 28px;
 }
 
-.team-name{
-font-size:14px;
-font-weight:bold;
-margin-top:8px;
+.team-name {
+  font-size: 14px;
+
+  font-weight: bold;
+
+  margin-top: 8px;
 }
 
-.score{
-font-size:30px;
-font-weight:bold;
-direction:ltr;
+.score {
+  font-size: 30px;
+
+  font-weight: bold;
+
+  direction: ltr;
 }
 
-.minute{
-text-align:center;
-color:#00d26a;
-font-weight:bold;
-font-size:13px;
-margin-top:5px;
+.minute {
+  text-align: center;
+
+  color: #00d26a;
+
+  font-weight: bold;
+
+  font-size: 13px;
+
+  margin-top: 5px;
 }
 
-.details-btn{
-width:100%;
-border:none;
-background:#00d26a;
-color:#06100b;
-font-weight:bold;
-padding:14px;
-border-radius:14px;
-margin-top:20px;
-cursor:pointer;
-font-size:14px;
+
+/* DETAILS BUTTON */
+
+.details-btn {
+  width: 100%;
+
+  border: none;
+
+  background: #00d26a;
+
+  color: #06100b;
+
+  font-weight: bold;
+
+  padding: 14px;
+
+  border-radius: 14px;
+
+  margin-top: 20px;
+
+  cursor: pointer;
+
+  font-size: 14px;
+
+  transition: .2s;
 }
 
-.match{
-background:#121a22;
-border-radius:18px;
-padding:16px;
-margin-bottom:10px;
+.details-btn:hover {
+  transform: translateY(-2px);
 }
 
-.match-top{
-display:flex;
-justify-content:space-between;
-font-size:11px;
-color:#7d8b97;
+
+/* MATCHES */
+
+.match {
+  background: #121a22;
+
+  border-radius: 18px;
+
+  padding: 16px;
+
+  margin-bottom: 10px;
 }
 
-.status{
-color:#00d26a;
+.match-top {
+  display: flex;
+
+  justify-content: space-between;
+
+  font-size: 11px;
+
+  color: #7d8b97;
 }
 
-.match-teams{
-display:grid;
-grid-template-columns:1fr auto 1fr;
-align-items:center;
-text-align:center;
-margin-top:14px;
+.status {
+  color: #00d26a;
 }
 
-.match-score{
-font-size:19px;
-font-weight:bold;
-direction:ltr;
+.match-teams {
+  display: grid;
+
+  grid-template-columns:
+    1fr auto 1fr;
+
+  align-items: center;
+
+  text-align: center;
+
+  margin-top: 14px;
 }
 
-.match-time{
-font-size:11px;
-color:#7d8b97;
-margin-top:5px;
+.match-score {
+  font-size: 19px;
+
+  font-weight: bold;
+
+  direction: ltr;
 }
 
-.news{
-background:#121a22;
-border-radius:18px;
-padding:15px;
-margin-bottom:10px;
-display:flex;
-gap:13px;
-cursor:pointer;
+.match-time {
+  font-size: 11px;
+
+  color: #7d8b97;
+
+  margin-top: 5px;
 }
 
-.news-icon{
-width:65px;
-height:65px;
-border-radius:14px;
-background:#1c2730;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:28px;
-flex-shrink:0;
+
+/* NEWS */
+
+.news {
+  background: #121a22;
+
+  border-radius: 18px;
+
+  padding: 15px;
+
+  margin-bottom: 10px;
+
+  display: flex;
+
+  gap: 13px;
+
+  cursor: pointer;
+
+  transition: .2s;
 }
 
-.news-content{
-flex:1;
+.news:hover {
+  transform: translateY(-2px);
+
+  background: #162029;
 }
 
-.news-title{
-font-size:14px;
-font-weight:bold;
-line-height:1.6;
+.news-icon {
+  width: 65px;
+  height: 65px;
+
+  border-radius: 14px;
+
+  background: #1c2730;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  font-size: 28px;
+
+  flex-shrink: 0;
 }
 
-.news-description{
-font-size:11px;
-color:#7d8b97;
-line-height:1.7;
-margin-top:5px;
+.news-content {
+  flex: 1;
 }
 
-.news-category{
-font-size:10px;
-color:#00d26a;
-margin-top:7px;
+.news-title {
+  font-size: 14px;
+
+  font-weight: bold;
+
+  line-height: 1.6;
 }
 
-.loading{
-text-align:center;
-color:#7d8b97;
-padding:20px;
+.news-description {
+  font-size: 11px;
+
+  color: #7d8b97;
+
+  line-height: 1.7;
+
+  margin-top: 5px;
 }
 
-.error{
-background:#301719;
-color:#ff7777;
-padding:15px;
-border-radius:14px;
-font-size:12px;
+.news-category {
+  display: inline-block;
+
+  font-size: 10px;
+
+  color: #00d26a;
+
+  background:
+    rgba(0,210,106,.1);
+
+  padding: 4px 7px;
+
+  border-radius: 7px;
+
+  margin-top: 7px;
 }
 
-.bottom-nav{
-position:fixed;
-bottom:0;
-left:50%;
-transform:translateX(-50%);
-width:min(650px,100%);
-height:75px;
-background:#10171d;
-border-top:1px solid #1d2730;
-display:grid;
-grid-template-columns:repeat(4,1fr);
-z-index:20;
+
+/* LOADING */
+
+.loading {
+  text-align: center;
+
+  color: #7d8b97;
+
+  padding: 25px;
 }
 
-.nav-item{
-border:none;
-background:transparent;
-color:#7d8b97;
-cursor:pointer;
-font-size:11px;
+.loading-spinner {
+  width: 28px;
+  height: 28px;
+
+  border: 3px solid #27333c;
+
+  border-top-color: #00d26a;
+
+  border-radius: 50%;
+
+  margin: 0 auto 10px;
+
+  animation:
+    spin .8s linear infinite;
 }
 
-.nav-item span{
-display:block;
-font-size:22px;
-margin-bottom:4px;
+@keyframes spin {
+
+  to {
+    transform: rotate(360deg);
+  }
+
 }
 
-.nav-item.active{
-color:#00d26a;
+
+/* ERROR */
+
+.error {
+  background: #301719;
+
+  color: #ff7777;
+
+  padding: 15px;
+
+  border-radius: 14px;
+
+  font-size: 12px;
+
+  text-align: center;
+}
+
+
+/* BOTTOM NAV */
+
+.bottom-nav {
+  position: fixed;
+
+  bottom: 0;
+
+  left: 50%;
+
+  transform:
+    translateX(-50%);
+
+  width:
+    min(650px, 100%);
+
+  height: 75px;
+
+  background: #10171d;
+
+  border-top:
+    1px solid #1d2730;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(4,1fr);
+
+  z-index: 20;
+}
+
+.nav-item {
+  border: none;
+
+  background: transparent;
+
+  color: #7d8b97;
+
+  cursor: pointer;
+
+  font-size: 11px;
+}
+
+.nav-item span {
+  display: block;
+
+  font-size: 22px;
+
+  margin-bottom: 4px;
+}
+
+.nav-item.active {
+  color: #00d26a;
+}
+
+
+/* MOBILE */
+
+@media(max-width:420px) {
+
+  .brand h1 {
+    font-size: 18px;
+  }
+
+  .score {
+    font-size: 27px;
+  }
+
+  .team-name {
+    font-size: 12px;
+  }
+
 }
 
 </style>
 
 </head>
+
 
 <body>
 
@@ -308,32 +519,38 @@ color:#00d26a;
 <div class="app">
 
 
+<!-- HEADER -->
+
 <header>
 
-<div class="brand">
+  <div class="brand">
 
-<div class="logo">
-⚽
-</div>
+    <div class="logo">
+      ⚽
+    </div>
 
-<div>
+    <div>
 
-<h1>
-football_live
-</h1>
+      <h1>
+        football_live
+      </h1>
 
-<p>
-نتایج زنده فوتبال
-</p>
+      <p>
+        نتایج زنده فوتبال
+      </p>
 
-</div>
+    </div>
 
-</div>
+  </div>
 
 
-<div class="notification">
-🔔
-</div>
+  <div
+    class="notification"
+    onclick="showNotification()">
+
+    🔔
+
+  </div>
 
 </header>
 
@@ -343,77 +560,81 @@ football_live
 
 <section class="section">
 
-<div class="section-title">
-🔴 بازی‌های زنده
-</div>
+  <div class="section-title">
+    🔴 بازی‌های زنده
+  </div>
 
 
-<div class="live-card">
-
-<div class="live-label">
-🔴 LIVE
-</div>
-
-<div class="league">
-لیگ برتر ایران
-</div>
+  <div class="live-card">
 
 
-<div class="teams">
+    <div class="live-label">
+      🔴 LIVE
+    </div>
 
 
-<div class="team">
-
-<div class="team-logo">
-🛡️
-</div>
-
-<div class="team-name">
-پرسپولیس
-</div>
-
-</div>
+    <div class="league">
+      لیگ برتر ایران
+    </div>
 
 
-<div>
-
-<div class="score">
-2 - 1
-</div>
-
-<div class="minute">
-66'
-</div>
-
-</div>
+    <div class="teams">
 
 
-<div class="team">
+      <div class="team">
 
-<div class="team-logo">
-🛡️
-</div>
+        <div class="team-logo">
+          🛡️
+        </div>
 
-<div class="team-name">
-استقلال
-</div>
+        <div class="team-name">
+          پرسپولیس
+        </div>
 
-</div>
-
-
-</div>
+      </div>
 
 
-<button
-class="details-btn"
-onclick="window.location.href='match.html'">
+      <div>
 
-مشاهده جزئیات بازی
+        <div class="score">
+          2 - 1
+        </div>
 
-</button>
+        <div class="minute">
+          66'
+        </div>
+
+      </div>
 
 
-</div>
+      <div class="team">
+
+        <div class="team-logo">
+          🛡️
+        </div>
+
+        <div class="team-name">
+          استقلال
+        </div>
+
+      </div>
+
+
+    </div>
+
+
+    <button
+      class="details-btn"
+      onclick="
+        window.location.href='match.html'
+      ">
+
+      مشاهده جزئیات بازی
+
+    </button>
+
+
+  </div>
 
 </section>
 
@@ -423,94 +644,104 @@ onclick="window.location.href='match.html'">
 
 <section class="section">
 
-<div class="section-title">
-📅 بازی‌های امروز
-</div>
+
+  <div class="section-title">
+    📅 بازی‌های امروز
+  </div>
 
 
-<div class="match">
-
-<div class="match-top">
-
-<span>
-لیگ برتر ایران
-</span>
-
-<span class="status">
-LIVE
-</span>
-
-</div>
+  <div class="match">
 
 
-<div class="match-teams">
+    <div class="match-top">
 
-<div>
-پرسپولیس
-</div>
+      <span>
+        لیگ برتر ایران
+      </span>
 
-<div>
+      <span class="status">
+        LIVE
+      </span>
 
-<div class="match-score">
-2 - 1
-</div>
-
-<div class="match-time">
-20:00
-</div>
-
-</div>
-
-<div>
-استقلال
-</div>
-
-</div>
-
-</div>
+    </div>
 
 
+    <div class="match-teams">
 
-<div class="match">
-
-<div class="match-top">
-
-<span>
-Premier League
-</span>
-
-<span>
-آینده
-</span>
-
-</div>
+      <div>
+        پرسپولیس
+      </div>
 
 
-<div class="match-teams">
+      <div>
 
-<div>
-Arsenal
-</div>
+        <div class="match-score">
+          2 - 1
+        </div>
 
-<div>
+        <div class="match-time">
+          20:00
+        </div>
 
-<div class="match-score">
--
-</div>
+      </div>
 
-<div class="match-time">
-22:30
-</div>
 
-</div>
+      <div>
+        استقلال
+      </div>
 
-<div>
-Chelsea
-</div>
+    </div>
 
-</div>
 
-</div>
+  </div>
+
+
+
+  <div class="match">
+
+
+    <div class="match-top">
+
+      <span>
+        Premier League
+      </span>
+
+      <span>
+        آینده
+      </span>
+
+    </div>
+
+
+    <div class="match-teams">
+
+      <div>
+        Arsenal
+      </div>
+
+
+      <div>
+
+        <div class="match-score">
+          -
+        </div>
+
+        <div class="match-time">
+          22:30
+        </div>
+
+      </div>
+
+
+      <div>
+        Chelsea
+      </div>
+
+    </div>
+
+
+  </div>
+
 
 </section>
 
@@ -520,18 +751,26 @@ Chelsea
 
 <section class="section">
 
-<div class="section-title">
-📰 آخرین اخبار
-</div>
+
+  <div class="section-title">
+    📰 آخرین اخبار
+  </div>
 
 
-<div id="newsContainer">
+  <div id="newsContainer">
 
-<div class="loading">
-در حال دریافت اخبار...
-</div>
 
-</div>
+    <div class="loading">
+
+      <div class="loading-spinner"></div>
+
+      در حال دریافت اخبار...
+
+    </div>
+
+
+  </div>
+
 
 </section>
 
@@ -540,54 +779,63 @@ Chelsea
 
 
 
-<!-- NAVIGATION -->
+<!-- BOTTOM NAV -->
 
 <nav class="bottom-nav">
 
-<button class="nav-item active">
 
-<span>
-🏠
-</span>
+  <button
+    class="nav-item active">
 
-خانه
+    <span>
+      🏠
+    </span>
 
-</button>
+    خانه
 
-
-<button
-class="nav-item"
-onclick="window.location.href='match.html'">
-
-<span>
-⚽
-</span>
-
-زنده
-
-</button>
+  </button>
 
 
-<button class="nav-item">
+  <button
+    class="nav-item"
+    onclick="
+      window.location.href='match.html'
+    ">
 
-<span>
-📅
-</span>
+    <span>
+      ⚽
+    </span>
 
-بازی‌ها
+    زنده
 
-</button>
+  </button>
 
 
-<button class="nav-item">
+  <button
+    class="nav-item"
+    onclick="showMatches()">
 
-<span>
-📰
-</span>
+    <span>
+      📅
+    </span>
 
-اخبار
+    بازی‌ها
 
-</button>
+  </button>
+
+
+  <button
+    class="nav-item"
+    onclick="scrollToNews()">
+
+    <span>
+      📰
+    </span>
+
+    اخبار
+
+  </button>
+
 
 </nav>
 
@@ -596,172 +844,258 @@ onclick="window.location.href='match.html'">
 <script>
 
 
+/* =========================
+   LOAD NEWS FROM JSON
+========================= */
+
+
 async function loadNews() {
 
-  const container = document.getElementById("newsContainer");
+
+  const container =
+    document.getElementById(
+      "newsContainer"
+    );
+
 
   try {
 
-    const response = await fetch("./api/news.json");
+
+    const response =
+      await fetch(
+        "./api/news.json"
+      );
+
 
     if (!response.ok) {
-      throw new Error("خطا در دریافت news.json");
+
+      throw new Error(
+        "news.json پیدا نشد"
+      );
+
     }
 
-    const data = await response.json();
 
-    if (!data.success || !Array.isArray(data.news)) {
-      throw new Error("ساختار news.json صحیح نیست");
+    const data =
+      await response.json();
+
+
+    if (
+      !data.success ||
+      !Array.isArray(data.news)
+    ) {
+
+      throw new Error(
+        "ساختار news.json صحیح نیست"
+      );
+
     }
+
 
     container.innerHTML = "";
 
-    data.news.forEach(news => {
 
-      const item = document.createElement("div");
+    if (
+      data.news.length === 0
+    ) {
 
-      item.className = "news";
+      container.innerHTML = `
 
-      item.innerHTML = `
-        <div class="news-icon">
-          📰
-        </div>
+        <div class="loading">
 
-        <div class="news-content">
-
-          <div class="news-title">
-            ${news.title}
-          </div>
-
-          <div class="news-description">
-            ${news.description}
-          </div>
-
-          <div class="news-category">
-            ${news.category}
-          </div>
+          خبری موجود نیست.
 
         </div>
+
       `;
 
-      container.appendChild(item);
+      return;
 
-    });
+    }
 
-  } catch (error) {
 
-    console.error(error);
+    data.news.forEach(
+      news => {
+
+
+        const item =
+          document.createElement(
+            "div"
+          );
+
+
+        item.className =
+          "news";
+
+
+        item.innerHTML = `
+
+          <div class="news-icon">
+            📰
+          </div>
+
+
+          <div class="news-content">
+
+
+            <div class="news-title">
+              ${escapeHTML(news.title)}
+            </div>
+
+
+            <div class="news-description">
+              ${escapeHTML(news.description)}
+            </div>
+
+
+            <div class="news-category">
+              ${escapeHTML(news.category)}
+            </div>
+
+
+          </div>
+
+        `;
+
+
+        container.appendChild(
+          item
+        );
+
+
+      }
+    );
+
+
+  }
+
+
+  catch(error) {
+
+
+    console.error(
+      "News Error:",
+      error
+    );
+
 
     container.innerHTML = `
+
       <div class="error">
-        ❌ اخبار بارگذاری نشد.
+
+        ❌ دریافت اخبار با مشکل مواجه شد.
+
+        <br><br>
+
+        مسیر:
+        api/news.json
+
       </div>
+
     `;
+
+
+  }
+
+
+}
+
+
+
+/* =========================
+   SECURITY
+========================= */
+
+
+function escapeHTML(value) {
+
+  if (value === undefined ||
+      value === null) {
+
+    return "";
+
+  }
+
+
+  const div =
+    document.createElement(
+      "div"
+    );
+
+
+  div.textContent =
+    String(value);
+
+
+  return div.innerHTML;
+
+}
+
+
+
+/* =========================
+   NOTIFICATION
+========================= */
+
+
+function showNotification() {
+
+  alert(
+    "🔔 اعلان‌های football_live به‌زودی فعال می‌شوند."
+  );
+
+}
+
+
+
+/* =========================
+   NEWS BUTTON
+========================= */
+
+
+function scrollToNews() {
+
+  const news =
+    document.getElementById(
+      "newsContainer"
+    );
+
+
+  if (news) {
+
+    news.scrollIntoView({
+      behavior: "smooth"
+    });
 
   }
 
 }
 
-loadNews();
-
-const response =
-await fetch(
-"api/news.json"
-);
-
-if(!response.ok){
-
-throw new Error(
-"خطا در دریافت اخبار"
-);
-
-}
 
 
-const data =
-await response.json();
+/* =========================
+   MATCHES BUTTON
+========================= */
 
 
-container.innerHTML="";
+function showMatches() {
 
-
-if(
-!data.news ||
-data.news.length===0
-){
-
-container.innerHTML=`
-<div class="loading">
-خبری موجود نیست
-</div>
-`;
-
-return;
+  window.scrollTo({
+    top: 430,
+    behavior: "smooth"
+  });
 
 }
 
 
-data.news.forEach(
-news => {
 
-const item =
-document.createElement(
-"div"
-);
-
-item.className="news";
-
-
-item.innerHTML=`
-
-<div class="news-icon">
-📰
-</div>
-
-<div class="news-content">
-
-<div class="news-title">
-${news.title}
-</div>
-
-<div class="news-description">
-${news.description}
-</div>
-
-<div class="news-category">
-${news.category}
-</div>
-
-</div>
-
-`;
-
-
-container.appendChild(item);
-
-});
-
-
-}catch(error){
-
-container.innerHTML=`
-
-<div class="error">
-
-❌ دریافت اخبار با مشکل مواجه شد.
-
-</div>
-
-`;
-
-console.error(error);
-
-}
-
-}
+/* =========================
+   START
+========================= */
 
 
 loadNews();
+
 
 </script>
 
