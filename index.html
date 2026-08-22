@@ -2,8 +2,11 @@
 <html lang="fa" dir="rtl">
 
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
 
 <title>football_live</title>
 
@@ -28,31 +31,48 @@ body {
   padding-bottom: 95px;
 }
 
-/* HEADER */
+
+/* =========================
+   HEADER
+========================= */
 
 header {
   padding: 18px 16px;
+
   display: flex;
+
   align-items: center;
+
   justify-content: space-between;
 }
 
 .brand {
   display: flex;
+
   align-items: center;
+
   gap: 12px;
 }
 
 .logo {
   width: 50px;
   height: 50px;
+
   border-radius: 16px;
+
   background: #00d26a;
+
   display: flex;
+
   align-items: center;
+
   justify-content: center;
+
   font-size: 27px;
-  box-shadow: 0 5px 20px rgba(0, 210, 106, .2);
+
+  box-shadow:
+    0 5px 20px
+    rgba(0, 210, 106, .2);
 }
 
 .brand h1 {
@@ -61,72 +81,117 @@ header {
 
 .brand p {
   font-size: 11px;
+
   color: #7d8b97;
+
   margin-top: 4px;
 }
 
 .notification {
   width: 43px;
   height: 43px;
+
   border-radius: 13px;
+
   background: #121a22;
+
   display: flex;
+
   align-items: center;
+
   justify-content: center;
+
   font-size: 20px;
+
   cursor: pointer;
 }
 
-/* SECTION */
+
+/* =========================
+   SECTION
+========================= */
 
 .section {
   padding: 0 16px;
-  margin-top: 18px;
+
+  margin-top: 12px;
 }
 
 .section-title {
   font-size: 18px;
+
   font-weight: bold;
+
   margin-bottom: 13px;
 }
 
-/* LIVE */
+
+/* =========================
+   LIVE CARD
+========================= */
 
 .live-card {
-  background: linear-gradient(
-    145deg,
-    #10251a,
-    #10171d
-  );
+  background:
+    linear-gradient(
+      145deg,
+      #10251a,
+      #10171d
+    );
 
-  border: 1px solid rgba(0, 210, 106, .35);
+  border:
+    1px solid
+    rgba(0, 210, 106, .35);
+
   border-radius: 24px;
+
   padding: 20px;
+
+  margin-bottom: 12px;
+
+  box-shadow:
+    0 10px 30px
+    rgba(0,0,0,.15);
 }
 
 .live-label {
   width: max-content;
+
   margin: auto;
-  background: rgba(255,50,50,.12);
+
+  background:
+    rgba(255,50,50,.12);
+
   color: #ff5252;
+
   padding: 6px 12px;
+
   border-radius: 20px;
+
   font-size: 12px;
+
   font-weight: bold;
 }
 
 .league {
   text-align: center;
+
   color: #7d8b97;
+
   font-size: 12px;
+
   margin-top: 14px;
 }
 
 .teams {
   display: grid;
-  grid-template-columns: 1fr auto 1fr;
+
+  grid-template-columns:
+    1fr auto 1fr;
+
   align-items: center;
+
   gap: 12px;
+
   margin-top: 18px;
 }
 
@@ -137,149 +202,257 @@ header {
 .team-logo {
   width: 58px;
   height: 58px;
+
   border-radius: 50%;
+
   background: #1c2730;
+
   display: flex;
+
   align-items: center;
+
   justify-content: center;
+
   margin: auto;
-  overflow: hidden;
+
+  font-size: 28px;
 }
 
-.team-logo img {
-  width: 48px;
-  height: 48px;
+.team-logo-small {
+  width: 42px;
+  height: 42px;
+
   object-fit: contain;
+
+  display: block;
+
+  margin: 0 auto 6px;
+}
+
+.live-card .team-logo-small {
+  width: 58px;
+  height: 58px;
 }
 
 .team-name {
   font-size: 14px;
+
   font-weight: bold;
+
   margin-top: 8px;
 }
 
 .score {
   font-size: 30px;
+
   font-weight: bold;
+
   direction: ltr;
+
+  white-space: nowrap;
 }
 
 .minute {
   text-align: center;
+
   color: #00d26a;
+
   font-weight: bold;
+
   font-size: 13px;
+
   margin-top: 5px;
 }
 
+
+/* =========================
+   DETAILS BUTTON
+========================= */
+
 .details-btn {
   width: 100%;
+
   border: none;
+
   background: #00d26a;
+
   color: #06100b;
+
   font-weight: bold;
+
   padding: 14px;
+
   border-radius: 14px;
+
   margin-top: 20px;
+
   cursor: pointer;
+
   font-size: 14px;
+
+  transition: .2s;
 }
 
-/* MATCHES */
+.details-btn:hover {
+  transform: translateY(-2px);
+}
+
+
+/* =========================
+   MATCH
+========================= */
 
 .match {
   background: #121a22;
+
   border-radius: 18px;
+
   padding: 16px;
+
   margin-bottom: 10px;
+
   cursor: pointer;
+
   transition: .2s;
 }
 
 .match:hover {
   transform: translateY(-2px);
+
   background: #162029;
 }
 
 .match-top {
   display: flex;
+
   justify-content: space-between;
+
   font-size: 11px;
+
   color: #7d8b97;
 }
 
-.status {
+.status-live {
+  color: #ff5252;
+
+  font-weight: bold;
+}
+
+.status-finished {
+  color: #7d8b97;
+}
+
+.status-upcoming {
   color: #00d26a;
 }
 
-.status.finished {
-  color: #7d8b97;
-}
-
-.status.upcoming {
-  color: #ffc107;
+.status-postponed {
+  color: #ffb347;
 }
 
 .match-teams {
   display: grid;
-  grid-template-columns: 1fr auto 1fr;
+
+  grid-template-columns:
+    1fr auto 1fr;
+
   align-items: center;
+
   text-align: center;
+
   margin-top: 14px;
-}
-
-.match-team {
-  font-size: 13px;
-  font-weight: bold;
-}
-
-.match-team img {
-  width: 35px;
-  height: 35px;
-  object-fit: contain;
-  display: block;
-  margin: 0 auto 7px;
 }
 
 .match-score {
   font-size: 19px;
+
   font-weight: bold;
+
   direction: ltr;
+
+  white-space: nowrap;
 }
 
 .match-time {
   font-size: 11px;
+
   color: #7d8b97;
+
   margin-top: 5px;
 }
 
-/* NEWS */
+.team-name-small {
+  font-size: 12px;
+
+  font-weight: bold;
+}
+
+
+/* =========================
+   EMPTY
+========================= */
+
+.empty {
+  background: #121a22;
+
+  border-radius: 18px;
+
+  padding: 25px;
+
+  text-align: center;
+
+  color: #7d8b97;
+
+  font-size: 13px;
+
+  margin-bottom: 10px;
+}
+
+
+/* =========================
+   NEWS
+========================= */
 
 .news {
   background: #121a22;
+
   border-radius: 18px;
+
   padding: 15px;
+
   margin-bottom: 10px;
+
   display: flex;
+
   gap: 13px;
+
   cursor: pointer;
+
   transition: .2s;
 }
 
 .news:hover {
   transform: translateY(-2px);
+
   background: #162029;
 }
 
 .news-icon {
   width: 65px;
   height: 65px;
+
   border-radius: 14px;
+
   background: #1c2730;
+
   display: flex;
+
   align-items: center;
+
   justify-content: center;
+
   font-size: 28px;
+
   flex-shrink: 0;
 }
 
@@ -289,100 +462,147 @@ header {
 
 .news-title {
   font-size: 14px;
+
   font-weight: bold;
+
   line-height: 1.6;
 }
 
 .news-description {
   font-size: 11px;
+
   color: #7d8b97;
+
   line-height: 1.7;
+
   margin-top: 5px;
 }
 
 .news-category {
   display: inline-block;
+
   font-size: 10px;
+
   color: #00d26a;
-  background: rgba(0,210,106,.1);
+
+  background:
+    rgba(0,210,106,.1);
+
   padding: 4px 7px;
+
   border-radius: 7px;
+
   margin-top: 7px;
 }
 
-/* LOADING */
+
+/* =========================
+   LOADING
+========================= */
 
 .loading {
   text-align: center;
+
   color: #7d8b97;
+
   padding: 25px;
 }
 
 .loading-spinner {
   width: 28px;
   height: 28px;
+
   border: 3px solid #27333c;
+
   border-top-color: #00d26a;
+
   border-radius: 50%;
+
   margin: 0 auto 10px;
-  animation: spin .8s linear infinite;
+
+  animation:
+    spin .8s linear infinite;
 }
 
 @keyframes spin {
+
   to {
     transform: rotate(360deg);
   }
+
 }
 
-/* ERROR */
+
+/* =========================
+   ERROR
+========================= */
 
 .error {
   background: #301719;
+
   color: #ff7777;
+
   padding: 15px;
+
   border-radius: 14px;
+
   font-size: 12px;
+
   text-align: center;
+
+  margin-bottom: 10px;
 }
 
-/* EMPTY */
 
-.empty {
-  background: #121a22;
-  color: #7d8b97;
-  padding: 25px;
-  border-radius: 18px;
-  text-align: center;
-  font-size: 13px;
-}
-
-/* BOTTOM NAV */
+/* =========================
+   BOTTOM NAV
+========================= */
 
 .bottom-nav {
   position: fixed;
+
   bottom: 0;
+
   left: 50%;
-  transform: translateX(-50%);
-  width: min(650px, 100%);
+
+  transform:
+    translateX(-50%);
+
+  width:
+    min(650px, 100%);
+
   height: 75px;
+
   background: #10171d;
-  border-top: 1px solid #1d2730;
+
+  border-top:
+    1px solid #1d2730;
+
   display: grid;
-  grid-template-columns: repeat(4,1fr);
+
+  grid-template-columns:
+    repeat(4,1fr);
+
   z-index: 20;
 }
 
 .nav-item {
   border: none;
+
   background: transparent;
+
   color: #7d8b97;
+
   cursor: pointer;
+
   font-size: 11px;
 }
 
 .nav-item span {
   display: block;
+
   font-size: 22px;
+
   margin-bottom: 4px;
 }
 
@@ -390,7 +610,10 @@ header {
   color: #00d26a;
 }
 
-/* MOBILE */
+
+/* =========================
+   MOBILE
+========================= */
 
 @media(max-width:420px) {
 
@@ -412,11 +635,16 @@ header {
 
 </head>
 
+
 <body>
+
 
 <div class="app">
 
-<!-- HEADER -->
+
+<!-- =========================
+     HEADER
+========================= -->
 
 <header>
 
@@ -428,7 +656,9 @@ header {
 
     <div>
 
-      <h1>football_live</h1>
+      <h1>
+        football_live
+      </h1>
 
       <p>
         نتایج زنده فوتبال
@@ -437,6 +667,7 @@ header {
     </div>
 
   </div>
+
 
   <div
     class="notification"
@@ -449,7 +680,10 @@ header {
 </header>
 
 
-<!-- LIVE MATCH -->
+
+<!-- =========================
+     LIVE MATCHES
+========================= -->
 
 <section class="section">
 
@@ -457,7 +691,8 @@ header {
     🔴 بازی‌های زنده
   </div>
 
-  <div id="liveContainer">
+
+  <div id="liveMatches">
 
     <div class="loading">
 
@@ -472,23 +707,25 @@ header {
 </section>
 
 
-<!-- TODAY MATCHES -->
 
-<section
-  class="section"
-  id="matchesSection">
+<!-- =========================
+     TODAY MATCHES
+========================= -->
+
+<section class="section">
 
   <div class="section-title">
     📅 بازی‌های امروز
   </div>
 
-  <div id="matchesContainer">
+
+  <div id="todayMatches">
 
     <div class="loading">
 
       <div class="loading-spinner"></div>
 
-      در حال دریافت مسابقات...
+      در حال دریافت بازی‌های امروز...
 
     </div>
 
@@ -497,15 +734,17 @@ header {
 </section>
 
 
-<!-- NEWS -->
 
-<section
-  class="section"
-  id="newsSection">
+<!-- =========================
+     NEWS
+========================= -->
+
+<section class="section">
 
   <div class="section-title">
     📰 آخرین اخبار
   </div>
+
 
   <div id="newsContainer">
 
@@ -521,18 +760,25 @@ header {
 
 </section>
 
+
 </div>
 
 
-<!-- BOTTOM NAV -->
+
+<!-- =========================
+     BOTTOM NAV
+========================= -->
 
 <nav class="bottom-nav">
+
 
   <button
     class="nav-item active"
     onclick="goHome()">
 
-    <span>🏠</span>
+    <span>
+      🏠
+    </span>
 
     خانه
 
@@ -543,7 +789,9 @@ header {
     class="nav-item"
     onclick="scrollToLive()">
 
-    <span>⚽</span>
+    <span>
+      ⚽
+    </span>
 
     زنده
 
@@ -554,7 +802,9 @@ header {
     class="nav-item"
     onclick="showMatches()">
 
-    <span>📅</span>
+    <span>
+      📅
+    </span>
 
     بازی‌ها
 
@@ -565,205 +815,383 @@ header {
     class="nav-item"
     onclick="scrollToNews()">
 
-    <span>📰</span>
+    <span>
+      📰
+    </span>
 
     اخبار
 
   </button>
 
+
 </nav>
+
 
 
 <script>
 
-/* =========================================
-   GLOBAL DATA
-========================================= */
 
-let matchesData = [];
-
-
-/* =========================================
-   LOAD MATCHES
-========================================= */
-
-async function loadMatches() {
-
-  const liveContainer =
-    document.getElementById(
-      "liveContainer"
-    );
-
-  const matchesContainer =
-    document.getElementById(
-      "matchesContainer"
-    );
-
-  try {
-
-    const response =
-      await fetch(
-        "./api/matches.json?time=" +
-        Date.now()
-      );
-
-    if (!response.ok) {
-
-      throw new Error(
-        "matches.json پیدا نشد"
-      );
-
-    }
-
-    const data =
-      await response.json();
-
-    if (
-      !data.matches ||
-      !Array.isArray(data.matches)
-    ) {
-
-      throw new Error(
-        "ساختار matches.json صحیح نیست"
-      );
-
-    }
-
-    matchesData =
-      data.matches;
+/* =====================================================
+   API CONFIG
+===================================================== */
 
 
-    renderLiveMatches(
-      matchesData,
-      liveContainer
-    );
+/*
+  اگر API مسابقاتت مسیر دیگری دارد،
+  فقط مقدار زیر را تغییر بده.
+
+  مثال:
+
+  const MATCHES_API =
+    "https://football-live-api-7fse.onrender.com/api/matches";
+*/
+
+const MATCHES_API =
+  "/api/matches";
 
 
-    renderTodayMatches(
-      matchesData,
-      matchesContainer
-    );
+/*
+  مسیر اخبار
+*/
+
+const NEWS_API =
+  "./api/news.json";
 
 
-  } catch(error) {
 
-    console.error(
-      "Matches Error:",
-      error
-    );
+/* =====================================================
+   ESCAPE HTML
+===================================================== */
 
-    liveContainer.innerHTML = `
+function escapeHTML(value) {
 
-      <div class="error">
+  if (
+    value === undefined ||
+    value === null
+  ) {
 
-        ❌ دریافت مسابقات با مشکل مواجه شد.
+    return "";
 
-        <br><br>
-
-        مسیر:
-
-        api/matches.json
-
-      </div>
-
-    `;
+  }
 
 
-    matchesContainer.innerHTML = "";
+  const div =
+    document.createElement("div");
+
+
+  div.textContent =
+    String(value);
+
+
+  return div.innerHTML;
+
+}
+
+
+
+/* =====================================================
+   STATUS TEXT
+===================================================== */
+
+function getStatusText(status) {
+
+  switch(status) {
+
+    case "IN_PLAY":
+
+      return "🔴 LIVE";
+
+
+    case "PAUSED":
+
+      return "⏸ بین دو نیمه";
+
+
+    case "FINISHED":
+
+      return "پایان یافته";
+
+
+    case "TIMED":
+
+      return "آینده";
+
+
+    case "SCHEDULED":
+
+      return "آینده";
+
+
+    case "POSTPONED":
+
+      return "به تعویق افتاده";
+
+
+    case "SUSPENDED":
+
+      return "معلق";
+
+
+    case "CANCELLED":
+
+      return "لغو شده";
+
+
+    default:
+
+      return "نامشخص";
 
   }
 
 }
 
 
-/* =========================================
-   LIVE MATCHES
-========================================= */
 
-function renderLiveMatches(
-  matches,
-  container
-) {
+/* =====================================================
+   STATUS CLASS
+===================================================== */
 
-  const liveMatches =
-    matches.filter(
-      match => {
-
-        return (
-          match.status === "IN_PLAY" ||
-          match.status === "PAUSED"
-        );
-
-      }
-    );
-
+function getStatusClass(status) {
 
   if (
-    liveMatches.length === 0
+    status === "IN_PLAY" ||
+    status === "PAUSED"
   ) {
 
-    container.innerHTML = `
-
-      <div class="empty">
-
-        🟢 در حال حاضر بازی زنده‌ای پیدا نشد.
-
-      </div>
-
-    `;
-
-    return;
+    return "status-live";
 
   }
 
 
-  const match =
-    liveMatches[0];
+  if (status === "FINISHED") {
+
+    return "status-finished";
+
+  }
 
 
-  const homeScore =
-    match.score?.fullTime?.home ??
-    0;
+  if (status === "POSTPONED" ||
+      status === "SUSPENDED" ||
+      status === "CANCELLED") {
 
-  const awayScore =
-    match.score?.fullTime?.away ??
-    0;
+    return "status-postponed";
+
+  }
 
 
-  const homeName =
-    match.homeTeam?.shortName ||
+  return "status-upcoming";
+
+}
+
+
+
+/* =====================================================
+   FORMAT TIME
+===================================================== */
+
+function formatTime(utcDate) {
+
+  if (!utcDate) {
+
+    return "--:--";
+
+  }
+
+
+  const date =
+    new Date(utcDate);
+
+
+  if (
+    Number.isNaN(
+      date.getTime()
+    )
+  ) {
+
+    return "--:--";
+
+  }
+
+
+  return date.toLocaleTimeString(
+    "fa-IR",
+    {
+      hour: "2-digit",
+      minute: "2-digit"
+    }
+  );
+
+}
+
+
+
+/* =====================================================
+   GET SCORE
+===================================================== */
+
+function getScore(match) {
+
+  const score =
+    match.score || {};
+
+
+  const fullTime =
+    score.fullTime || {};
+
+
+  const home =
+    fullTime.home;
+
+
+  const away =
+    fullTime.away;
+
+
+  if (
+    home !== null &&
+    home !== undefined &&
+    away !== null &&
+    away !== undefined
+  ) {
+
+    return `${home} - ${away}`;
+
+  }
+
+
+  return "-";
+
+}
+
+
+
+/* =====================================================
+   GET LIVE MINUTE
+===================================================== */
+
+function getMinute(match) {
+
+  if (
+    match.status === "PAUSED"
+  ) {
+
+    return "⏸ بین دو نیمه";
+
+  }
+
+
+  if (
+    match.status !== "IN_PLAY"
+  ) {
+
+    return "";
+
+  }
+
+
+  if (
+    match.minute !== undefined &&
+    match.minute !== null
+  ) {
+
+    return `${match.minute}'`;
+
+  }
+
+
+  return "LIVE";
+
+}
+
+
+
+/* =====================================================
+   TEAM LOGO
+===================================================== */
+
+function getTeamLogo(team, live = false) {
+
+  const name =
+    team?.name || "تیم";
+
+
+  const crest =
+    team?.crest;
+
+
+  if (crest) {
+
+    return `
+
+      <img
+
+        class="${
+          live
+          ? "team-logo-small live-logo"
+          : "team-logo-small"
+        }"
+
+        src="${escapeHTML(crest)}"
+
+        alt="${escapeHTML(name)}"
+
+        onerror="
+          this.onerror=null;
+          this.style.display='none';
+        "
+
+      >
+
+    `;
+
+  }
+
+
+  return `
+
+    <div class="team-logo">
+      ⚽
+    </div>
+
+  `;
+
+}
+
+
+
+/* =====================================================
+   CREATE LIVE CARD
+===================================================== */
+
+function createLiveMatch(match) {
+
+  const home =
     match.homeTeam?.name ||
     "تیم میزبان";
 
 
-  const awayName =
-    match.awayTeam?.shortName ||
+  const away =
     match.awayTeam?.name ||
     "تیم مهمان";
 
 
-  const homeLogo =
-    match.homeTeam?.crest ||
-    "";
-
-
-  const awayLogo =
-    match.awayTeam?.crest ||
-    "";
-
-
   const league =
     match.competition?.name ||
-    "مسابقه فوتبال";
+    "مسابقات فوتبال";
+
+
+  const score =
+    getScore(match);
 
 
   const minute =
-    getMatchMinute(match);
+    getMinute(match);
 
 
-  container.innerHTML = `
+  return `
 
     <div class="live-card">
+
 
       <div class="live-label">
 
@@ -782,40 +1210,36 @@ function renderLiveMatches(
       <div class="teams">
 
 
+        <!-- HOME -->
+
         <div class="team">
 
-          <div class="team-logo">
+          ${getTeamLogo(
+            match.homeTeam,
+            true
+          )}
 
-            ${
-              homeLogo
-              ?
-              `<img
-                src="${escapeHTML(homeLogo)}"
-                alt=""
-                onerror="this.style.display='none'"
-              >`
-              :
-              "⚽"
-            }
-
-          </div>
 
           <div class="team-name">
 
-            ${escapeHTML(homeName)}
+            ${escapeHTML(home)}
 
           </div>
 
         </div>
 
 
+
+        <!-- SCORE -->
+
         <div>
 
           <div class="score">
 
-            ${homeScore} - ${awayScore}
+            ${escapeHTML(score)}
 
           </div>
+
 
           <div class="minute">
 
@@ -826,27 +1250,20 @@ function renderLiveMatches(
         </div>
 
 
+
+        <!-- AWAY -->
+
         <div class="team">
 
-          <div class="team-logo">
+          ${getTeamLogo(
+            match.awayTeam,
+            true
+          )}
 
-            ${
-              awayLogo
-              ?
-              `<img
-                src="${escapeHTML(awayLogo)}"
-                alt=""
-                onerror="this.style.display='none'"
-              >`
-              :
-              "⚽"
-            }
-
-          </div>
 
           <div class="team-name">
 
-            ${escapeHTML(awayName)}
+            ${escapeHTML(away)}
 
           </div>
 
@@ -856,13 +1273,21 @@ function renderLiveMatches(
       </div>
 
 
+
       <button
+
         class="details-btn"
-        onclick="openMatch('${match.id}')">
+
+        onclick="
+          openMatch(${Number(match.id)})
+        "
+
+      >
 
         مشاهده جزئیات بازی
 
       </button>
+
 
     </div>
 
@@ -871,369 +1296,383 @@ function renderLiveMatches(
 }
 
 
-/* =========================================
-   TODAY MATCHES
-========================================= */
 
-function renderTodayMatches(
-  matches,
-  container
-) {
+/* =====================================================
+   CREATE TODAY MATCH
+===================================================== */
 
-  if (
-    matches.length === 0
-  ) {
+function createTodayMatch(match) {
 
-    container.innerHTML = `
+  const home =
+    match.homeTeam?.name ||
+    "میزبان";
 
-      <div class="empty">
 
-        مسابقه‌ای برای امروز پیدا نشد.
+  const away =
+    match.awayTeam?.name ||
+    "مهمان";
+
+
+  const league =
+    match.competition?.name ||
+    "فوتبال";
+
+
+  const status =
+    match.status ||
+    "";
+
+
+  const statusText =
+    getStatusText(status);
+
+
+  const statusClass =
+    getStatusClass(status);
+
+
+  return `
+
+    <div
+
+      class="match"
+
+      onclick="
+        openMatch(${Number(match.id)})
+      "
+
+    >
+
+
+      <div class="match-top">
+
+
+        <span>
+
+          ${escapeHTML(league)}
+
+        </span>
+
+
+        <span class="${statusClass}">
+
+          ${escapeHTML(statusText)}
+
+        </span>
+
+
+      </div>
+
+
+
+      <div class="match-teams">
+
+
+        <!-- HOME -->
+
+        <div>
+
+          ${getTeamLogo(
+            match.homeTeam
+          )}
+
+
+          <div class="team-name-small">
+
+            ${escapeHTML(home)}
+
+          </div>
+
+        </div>
+
+
+
+        <!-- SCORE -->
+
+        <div>
+
+          <div class="match-score">
+
+            ${escapeHTML(
+              getScore(match)
+            )}
+
+          </div>
+
+
+          <div class="match-time">
+
+            ${formatTime(
+              match.utcDate
+            )}
+
+          </div>
+
+        </div>
+
+
+
+        <!-- AWAY -->
+
+        <div>
+
+          ${getTeamLogo(
+            match.awayTeam
+          )}
+
+
+          <div class="team-name-small">
+
+            ${escapeHTML(away)}
+
+          </div>
+
+        </div>
+
+
+      </div>
+
+
+    </div>
+
+  `;
+
+}
+
+
+
+/* =====================================================
+   LOAD MATCHES
+===================================================== */
+
+async function loadMatches() {
+
+  const liveContainer =
+    document.getElementById(
+      "liveMatches"
+    );
+
+
+  const todayContainer =
+    document.getElementById(
+      "todayMatches"
+    );
+
+
+  try {
+
+
+    liveContainer.innerHTML = `
+
+      <div class="loading">
+
+        <div class="loading-spinner"></div>
+
+        در حال بروزرسانی...
 
       </div>
 
     `;
 
-    return;
 
-  }
-
-
-  container.innerHTML = "";
-
-
-  matches.forEach(
-    match => {
-
-      const item =
-        document.createElement(
-          "div"
-        );
+    const response =
+      await fetch(
+        MATCHES_API,
+        {
+          cache: "no-store"
+        }
+      );
 
 
-      item.className =
-        "match";
+    if (!response.ok) {
+
+      throw new Error(
+        `HTTP ${response.status}`
+      );
+
+    }
 
 
-      const homeName =
-        match.homeTeam?.shortName ||
-        match.homeTeam?.name ||
-        "میزبان";
+    const data =
+      await response.json();
 
 
-      const awayName =
-        match.awayTeam?.shortName ||
-        match.awayTeam?.name ||
-        "مهمان";
+    console.log(
+      "Football API:",
+      data
+    );
 
 
-      const homeLogo =
-        match.homeTeam?.crest ||
-        "";
+    /*
+      API باید به شکل زیر باشد:
 
-
-      const awayLogo =
-        match.awayTeam?.crest ||
-        "";
-
-
-      const competition =
-        match.competition?.name ||
-        "فوتبال";
-
-
-      const status =
-        match.status ||
-        "";
-
-
-      const homeScore =
-        match.score?.fullTime?.home;
-
-
-      const awayScore =
-        match.score?.fullTime?.away;
-
-
-      let scoreText =
-        "-";
-
-
-      if (
-        homeScore !== null &&
-        homeScore !== undefined &&
-        awayScore !== null &&
-        awayScore !== undefined
-      ) {
-
-        scoreText =
-          `${homeScore} - ${awayScore}`;
-
+      {
+        "matches": [...]
       }
+    */
 
 
-      const time =
-        formatTime(
-          match.utcDate
-        );
+    if (
+      !data ||
+      !Array.isArray(
+        data.matches
+      )
+    ) {
+
+      throw new Error(
+        "ساختار API مسابقات صحیح نیست"
+      );
+
+    }
 
 
-      const statusInfo =
-        getStatusInfo(
-          status
-        );
+    const matches =
+      data.matches;
 
 
-      item.innerHTML = `
+    /* =================================
+       LIVE
+    ================================= */
 
-        <div class="match-top">
+    const liveMatches =
+      matches.filter(
+        match =>
 
-          <span>
+          match.status ===
+            "IN_PLAY"
 
-            ${escapeHTML(
-              competition
-            )}
+          ||
 
-          </span>
-
-          <span
-            class="${statusInfo.className}">
-
-            ${statusInfo.text}
-
-          </span>
-
-        </div>
+          match.status ===
+            "PAUSED"
+      );
 
 
-        <div class="match-teams">
+    if (
+      liveMatches.length === 0
+    ) {
 
+      liveContainer.innerHTML = `
 
-          <div class="match-team">
+        <div class="empty">
 
-            ${
-              homeLogo
-              ?
-              `<img
-                src="${escapeHTML(homeLogo)}"
-                alt=""
-                onerror="this.style.display='none'"
-              >`
-              :
-              "⚽"
-            }
-
-            ${escapeHTML(homeName)}
-
-          </div>
-
-
-          <div>
-
-            <div class="match-score">
-
-              ${scoreText}
-
-            </div>
-
-
-            <div class="match-time">
-
-              ${escapeHTML(time)}
-
-            </div>
-
-          </div>
-
-
-          <div class="match-team">
-
-            ${
-              awayLogo
-              ?
-              `<img
-                src="${escapeHTML(awayLogo)}"
-                alt=""
-                onerror="this.style.display='none'"
-              >`
-              :
-              "⚽"
-            }
-
-            ${escapeHTML(awayName)}
-
-          </div>
-
+          ⚽ در حال حاضر
+          بازی زنده‌ای وجود ندارد.
 
         </div>
 
       `;
 
+    }
 
-      item.onclick =
-        () => openMatch(
-          match.id
-        );
+    else {
 
-
-      container.appendChild(
-        item
-      );
+      liveContainer.innerHTML =
+        liveMatches
+          .map(
+            createLiveMatch
+          )
+          .join("");
 
     }
-  );
-
-}
 
 
-/* =========================================
-   STATUS
-========================================= */
 
-function getStatusInfo(
-  status
-) {
+    /* =================================
+       TODAY
+    ================================= */
 
-  switch(status) {
+    if (
+      matches.length === 0
+    ) {
 
-    case "IN_PLAY":
+      todayContainer.innerHTML = `
 
-      return {
-        text: "LIVE",
-        className: "status"
-      };
+        <div class="empty">
 
+          📅 بازی‌ای برای امروز
+          پیدا نشد.
 
-    case "PAUSED":
+        </div>
 
-      return {
-        text: "نیمه",
-        className: "status"
-      };
+      `;
 
+    }
 
-    case "FINISHED":
+    else {
 
-      return {
-        text: "پایان",
-        className: "status finished"
-      };
+      todayContainer.innerHTML =
+        matches
+          .map(
+            createTodayMatch
+          )
+          .join("");
 
+    }
 
-    case "POSTPONED":
-
-      return {
-        text: "لغو/تعویق",
-        className: "status finished"
-      };
-
-
-    case "TIMED":
-
-      return {
-        text: "آینده",
-        className: "status upcoming"
-      };
-
-
-    default:
-
-      return {
-        text: status,
-        className: "status"
-      };
 
   }
 
-}
+  catch(error) {
 
 
-/* =========================================
-   MATCH TIME
-========================================= */
-
-function formatTime(
-  utcDate
-) {
-
-  if (!utcDate) {
-
-    return "--:--";
-
-  }
-
-
-  const date =
-    new Date(
-      utcDate
+    console.error(
+      "Matches Error:",
+      error
     );
 
 
-  return date.toLocaleTimeString(
-    "fa-IR",
-    {
-      hour: "2-digit",
-      minute: "2-digit"
-    }
-  );
+    liveContainer.innerHTML = `
 
-}
+      <div class="error">
+
+        ❌ دریافت بازی‌ها ناموفق بود.
+
+        <br><br>
+
+        مسیر API:
+
+        <br>
+
+        ${escapeHTML(
+          MATCHES_API
+        )}
+
+        <br><br>
+
+        خطا:
+
+        ${escapeHTML(
+          error.message
+        )}
+
+      </div>
+
+    `;
 
 
-/* =========================================
-   LIVE MINUTE
-========================================= */
+    todayContainer.innerHTML = `
 
-function getMatchMinute(
-  match
-) {
+      <div class="empty">
 
-  if (
-    match.status === "PAUSED"
-  ) {
+        بازی‌ها در دسترس نیستند.
 
-    return "نیمه اول/دوم";
+      </div>
+
+    `;
 
   }
 
-
-  if (
-    match.minute !== undefined &&
-    match.minute !== null
-  ) {
-
-    return `${match.minute}'`;
-
-  }
-
-
-  return "در حال بازی";
-
 }
 
 
-/* =========================================
-   OPEN MATCH
-========================================= */
 
-function openMatch(
-  id
-) {
-
-  window.location.href =
-    "match.html?id=" +
-    encodeURIComponent(
-      id
-    );
-
-}
-
-
-/* =========================================
+/* =====================================================
    LOAD NEWS
-========================================= */
+===================================================== */
 
 async function loadNews() {
+
 
   const container =
     document.getElementById(
@@ -1243,10 +1682,13 @@ async function loadNews() {
 
   try {
 
+
     const response =
       await fetch(
-        "./api/news.json?time=" +
-        Date.now()
+        NEWS_API,
+        {
+          cache: "no-store"
+        }
       );
 
 
@@ -1265,7 +1707,9 @@ async function loadNews() {
 
     if (
       !data.success ||
-      !Array.isArray(data.news)
+      !Array.isArray(
+        data.news
+      )
     ) {
 
       throw new Error(
@@ -1299,6 +1743,7 @@ async function loadNews() {
 
     data.news.forEach(
       news => {
+
 
         const item =
           document.createElement(
@@ -1358,11 +1803,15 @@ async function loadNews() {
           item
         );
 
+
       }
     );
 
 
-  } catch(error) {
+  }
+
+  catch(error) {
+
 
     console.error(
       "News Error:",
@@ -1380,7 +1829,9 @@ async function loadNews() {
 
         مسیر:
 
-        api/news.json
+        ${escapeHTML(
+          NEWS_API
+        )}
 
       </div>
 
@@ -1391,42 +1842,35 @@ async function loadNews() {
 }
 
 
-/* =========================================
-   SECURITY
-========================================= */
 
-function escapeHTML(
-  value
-) {
+/* =====================================================
+   OPEN MATCH
+===================================================== */
+
+function openMatch(id) {
 
   if (
-    value === undefined ||
-    value === null
+    !id ||
+    Number.isNaN(
+      Number(id)
+    )
   ) {
 
-    return "";
+    return;
 
   }
 
 
-  const div =
-    document.createElement(
-      "div"
-    );
-
-
-  div.textContent =
-    String(value);
-
-
-  return div.innerHTML;
+  window.location.href =
+    `match.html?id=${encodeURIComponent(id)}`;
 
 }
 
 
-/* =========================================
+
+/* =====================================================
    NOTIFICATION
-========================================= */
+===================================================== */
 
 function showNotification() {
 
@@ -1437,61 +1881,101 @@ function showNotification() {
 }
 
 
-/* =========================================
-   NAVIGATION
-========================================= */
+
+/* =====================================================
+   HOME
+===================================================== */
 
 function goHome() {
 
   window.scrollTo({
+
     top: 0,
+
     behavior: "smooth"
+
   });
 
 }
 
+
+
+/* =====================================================
+   LIVE BUTTON
+===================================================== */
 
 function scrollToLive() {
 
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth"
-  });
+  const live =
+    document.getElementById(
+      "liveMatches"
+    );
+
+
+  if (live) {
+
+    live.scrollIntoView({
+
+      behavior: "smooth",
+
+      block: "start"
+
+    });
+
+  }
 
 }
 
+
+
+/* =====================================================
+   MATCHES BUTTON
+===================================================== */
 
 function showMatches() {
 
-  const section =
+  const matches =
     document.getElementById(
-      "matchesSection"
+      "todayMatches"
     );
 
 
-  if (section) {
+  if (matches) {
 
-    section.scrollIntoView({
-      behavior: "smooth"
+    matches.scrollIntoView({
+
+      behavior: "smooth",
+
+      block: "start"
+
     });
 
   }
 
 }
 
+
+
+/* =====================================================
+   NEWS BUTTON
+===================================================== */
 
 function scrollToNews() {
 
-  const section =
+  const news =
     document.getElementById(
-      "newsSection"
+      "newsContainer"
     );
 
 
-  if (section) {
+  if (news) {
 
-    section.scrollIntoView({
-      behavior: "smooth"
+    news.scrollIntoView({
+
+      behavior: "smooth",
+
+      block: "start"
+
     });
 
   }
@@ -1499,25 +1983,30 @@ function scrollToNews() {
 }
 
 
-/* =========================================
-   START
-========================================= */
+
+/* =====================================================
+   START APP
+===================================================== */
 
 loadMatches();
 
 loadNews();
 
 
-/* =========================================
-   AUTO REFRESH
-========================================= */
+
+/*
+  بروزرسانی مسابقات هر 30 ثانیه
+*/
 
 setInterval(
   loadMatches,
-  60000
+  30000
 );
 
+
+
 </script>
+
 
 </body>
 
