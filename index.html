@@ -596,14 +596,73 @@ onclick="window.location.href='match.html'">
 <script>
 
 
-async function loadNews(){
+async function loadNews() {
 
-const container =
-document.getElementById(
-"newsContainer"
-);
+  const container = document.getElementById("newsContainer");
 
-try{
+  try {
+
+    const response = await fetch("./api/news.json");
+
+    if (!response.ok) {
+      throw new Error("خطا در دریافت news.json");
+    }
+
+    const data = await response.json();
+
+    if (!data.success || !Array.isArray(data.news)) {
+      throw new Error("ساختار news.json صحیح نیست");
+    }
+
+    container.innerHTML = "";
+
+    data.news.forEach(news => {
+
+      const item = document.createElement("div");
+
+      item.className = "news";
+
+      item.innerHTML = `
+        <div class="news-icon">
+          📰
+        </div>
+
+        <div class="news-content">
+
+          <div class="news-title">
+            ${news.title}
+          </div>
+
+          <div class="news-description">
+            ${news.description}
+          </div>
+
+          <div class="news-category">
+            ${news.category}
+          </div>
+
+        </div>
+      `;
+
+      container.appendChild(item);
+
+    });
+
+  } catch (error) {
+
+    console.error(error);
+
+    container.innerHTML = `
+      <div class="error">
+        ❌ اخبار بارگذاری نشد.
+      </div>
+    `;
+
+  }
+
+}
+
+loadNews();
 
 const response =
 await fetch(
