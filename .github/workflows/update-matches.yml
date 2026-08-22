@@ -2,6 +2,7 @@ name: Update Football Matches
 
 on:
   workflow_dispatch:
+
   schedule:
     - cron: "*/15 * * * *"
 
@@ -21,7 +22,6 @@ jobs:
         env:
           FOOTBALL_API_TOKEN: ${{ secrets.FOOTBALL_API_TOKEN }}
         run: |
-
           curl \
             -H "X-Auth-Token: $FOOTBALL_API_TOKEN" \
             "https://api.football-data.org/v4/matches" \
@@ -29,12 +29,10 @@ jobs:
 
       - name: Check JSON
         run: |
-
           python -m json.tool api/matches.json > /dev/null
 
       - name: Commit updated matches
         run: |
-
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
